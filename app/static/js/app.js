@@ -300,7 +300,7 @@ businessModelPieChart
       
 categoryRowChart
       .width(400)
-      .height(220)
+      .height(190)
       .dimension(category)
       .group(categoryGroup)
       .on("filtered", function (chart, filter) {update();});

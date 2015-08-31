@@ -54,7 +54,7 @@ footer {
     right: 0;
     bottom: 0;
     max-height: 0px;
-    height: 440px;
+    height: 70%;
     background-color: white;
     opacity:1;
     -webkit-transition: max-height 0.5s;
@@ -67,17 +67,17 @@ footer {
     bottom: 0;
     padding: 1em;
     background-color: white;
-    left:50%;
+    left:48%;
     -webkit-transition: bottom 0.5s;
     transition: bottom 0.5s;
 }
 
 #btn-filter.active {
-    bottom: 440px;
+    bottom: 70%;
 }
 
 #btn-filter.active + footer {
-    max-height: 440px;
+    max-height: 70%;
 }
 
 .FrenchFinTech {
@@ -110,7 +110,8 @@ footer {
 }
 
 #categoryPieChart {
-  position: relative;
+  position: absolute;
+  top : 205px;
 }
 
 #businessModelPieChart {
@@ -125,31 +126,32 @@ footer {
 }
 
 #color-1 {
- background:#37DEB0;
+ background:#073559;
 }
 
 #color-2 {
- background:#00B180;
+ background:#F1F1F1;
 }
 
 #color-3 {
- background:#11D29D;
+ background:#A51D0C;
  min-height:70px;
 }
 
 #color-4 {
- background:#9C9C9C;
+ background:#A51D0C;
  min-height:70px;
 }
 
 #color-5 {
- background:#5FE8C2;
+ background:#0D4F8B;
 }
 
 #color-6 {
- background:#94F2D8;
+ background:#590805;
 }
 
+/* 
 #tuile-titre-1 {
   background:#37DEB0;
 }
@@ -173,6 +175,7 @@ footer {
 #tuile-titre-6 {
  background:#94F2D8;
 }
+ */
 
 .tuile {
 	opacity:0.8;
