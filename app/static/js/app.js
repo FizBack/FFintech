@@ -290,9 +290,9 @@ var FF = svg_FF.append("image")
     });
 
 businessModelPieChart
-      .width(222)
-      .height(220)
-      .radius(108)
+      .width(190)
+      .height(190)
+      .radius(93)
       .innerRadius(0)
       .dimension(businessModel)
       .group(businessModelGroup)
@@ -336,7 +336,7 @@ fundsChart
           return p.value.latest;
       })
        .radiusValueAccessor(function (p) {
-           return p.value.total;
+           return 4;
        })
       .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 11, 31)]))
       .y(d3.scale.linear().domain([0, 200]))

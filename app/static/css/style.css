@@ -56,7 +56,7 @@ footer {
     max-height: 0px;
     height: 440px;
     background-color: white;
-    opacity:0.8;
+    opacity:1;
     -webkit-transition: max-height 0.5s;
     transition: max-height 0.5s;
 }
@@ -67,7 +67,7 @@ footer {
     bottom: 0;
     padding: 1em;
     background-color: white;
-    left:46%;
+    left:50%;
     -webkit-transition: bottom 0.5s;
     transition: bottom 0.5s;
 }
@@ -114,7 +114,9 @@ footer {
 }
 
 #businessModelPieChart {
-  position: relative;
+  position: absolute;
+  left : 220px;
+  top : 17px;
 }
 
 #inceptionBarChart {
@@ -123,36 +125,85 @@ footer {
 }
 
 #color-1 {
- background:#59252E;
+ background:#37DEB0;
 }
 
 #color-2 {
- background:#736332;
+ background:#00B180;
 }
 
 #color-3 {
- background:#A66933;
+ background:#11D29D;
+ min-height:70px;
 }
 
 #color-4 {
- background:#A65C32;
+ background:#9C9C9C;
+ min-height:70px;
 }
 
 #color-5 {
- background:#73322C;
+ background:#5FE8C2;
 }
 
 #color-6 {
- background:#4C8DA6;
+ background:#94F2D8;
+}
+
+#tuile-titre-1 {
+  background:#37DEB0;
+}
+
+#tuile-titre-2 {
+ background:#00B180;
+}
+
+#tuile-titre-3 {
+  background:#11D29D;
+}
+
+#tuile-titre-4 {
+ background:#9C9C9C;
+}
+
+#tuile-titre-5 {
+ background:#5FE8C2;
+}
+
+#tuile-titre-6 {
+ background:#94F2D8;
 }
 
 .tuile {
-	opacity:0.4;
-	transition: all 1s;
+	opacity:0.8;
+	transition: all 0.5s;
+	height:220px;
+}
+
+.mini-tuile {
+	opacity:0.8;
+	transition: all 0.5s;
+	height:110px;
 }
 
 .tuile:hover {
 	opacity:1;
+}
+
+.chart-title {
+	position:absolute;
+	opacity:1;
+	font-weight:lighter;
+	font-family: 22px, "Proxima Nova";
+	left:32px;
+	top:0px;
+	height:60px;
+	width:100%;
+}
+
+#total-raised {
+	position : absolute;
+	top : 115px;
 }
 
 /* FIN DASHBOARD */
