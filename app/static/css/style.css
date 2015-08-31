@@ -1,0 +1,158 @@
+/* GENERAL STYLING */
+
+.image {
+  visibility: visible;
+  cursor:pointer;
+}
+
+
+/* END GENERAL STYLING */
+
+
+
+
+/* BARRE DE NAVIAGATION */
+
+#logo {
+	float:left;
+	height:30px;
+	width:30px;
+	position:absolute;
+	left : 20px;
+	top : 8px;
+	transition: all 1s; 
+}
+
+#logo:hover {
+	transform: rotate(360deg);
+}
+
+/* FIN BARRE DE NAVIGATION */
+
+
+
+
+/* TABLE DES LOGOS */
+
+#table_logos {
+	position : absolute;
+	top : 60px;
+	left: 50px;
+}
+
+
+/* FIN TABLE DES LOGOS */
+
+
+
+
+/* DASHBOARD */
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 0px;
+    height: 440px;
+    background-color: white;
+    opacity:0.8;
+    -webkit-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+}
+
+#btn-filter {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 1em;
+    background-color: white;
+    left:46%;
+    -webkit-transition: bottom 0.5s;
+    transition: bottom 0.5s;
+}
+
+#btn-filter.active {
+    bottom: 440px;
+}
+
+#btn-filter.active + footer {
+    max-height: 440px;
+}
+
+.FrenchFinTech {
+	position:absolute;
+	left:60px;
+}
+
+#filtre-logo {
+	width: 40px;
+	height: 40px;
+}
+
+.dc-chart .pie-slice {
+    font-family: "Proxima Nova", Helvetica;
+    fill: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dc-chart .selected path {
+    stroke-width: 1;
+    stroke: white;
+    fill-opacity: 1;
+}
+
+.dc-chart .deselected path {
+    stroke: none;
+    fill-opacity: .5;
+    fill: white;
+}
+
+#categoryPieChart {
+  position: relative;
+}
+
+#businessModelPieChart {
+  position: relative;
+}
+
+#inceptionBarChart {
+  position: relative;
+
+}
+
+#color-1 {
+ background:#59252E;
+}
+
+#color-2 {
+ background:#736332;
+}
+
+#color-3 {
+ background:#A66933;
+}
+
+#color-4 {
+ background:#A65C32;
+}
+
+#color-5 {
+ background:#73322C;
+}
+
+#color-6 {
+ background:#4C8DA6;
+}
+
+.tuile {
+	opacity:0.4;
+	transition: all 1s;
+}
+
+.tuile:hover {
+	opacity:1;
+}
+
+/* FIN DASHBOARD */
