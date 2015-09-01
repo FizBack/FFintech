@@ -2,18 +2,20 @@ var width = $(window).width(),
     height = $(window).height(),
     goldenNumber = 1.618;
     
-var margin = { top: 40, bottom: height / 8, left: 40, right: 40 };
+var margin = { top: 60, bottom: 60, left: 60, right: 60 };
 
 var FranceFintech = "http://static1.squarespace.com/static/556da4b8e4b0f81335bf7dab/t/55785ab1e4b00fe50a288048/1434355652756/?format=1500w";
 var entonnoir = "http://s30.postimg.org/onqkun8qp/basic2_178_filter_512.png";
 
 var svg_logo = d3.select("#table_logos").append("svg")
-    .attr("width", width - margin.right - margin.left)
-    .attr("height", height - margin.top - margin.bottom);
+    .attr("width", 1200 - margin.right - margin.left)
+    .attr("height", 700 - margin.top - margin.bottom);
     
 var svg_filtres = d3.select("#filtres").append("svg:svg");
     		
-var svg_FF = d3.select("#FF").append("svg:svg");
+var svg_FF = d3.select("#FF").append("svg")
+    .attr("width", 370)
+    .attr("height", 100);
 
 function graphiques(data) {
 
@@ -49,7 +51,8 @@ var businessModelPieChart = dc.pieChart('#businessModelPieChart');
 var categoryRowChart = dc.rowChart('#categoryRowChart');
 var inceptionBarChart = dc.barChart('#inceptionBarChart');
 var totalLeve = dc.numberDisplay('#montant-leve');
-var fundsChart = dc.bubbleChart('#fundsBarChart');
+// var fundsChart = dc.bubbleChart('#fundsBarChart');
+var fundsChart = dc.compositeChart("#fundsBarChart");
 
 var ndx = crossfilter(data);
 var all = ndx.groupAll();
@@ -57,6 +60,11 @@ var all = ndx.groupAll();
 var Company = ndx.dimension(function(d){
   return d.Company;
 })
+
+var Round_1_Group = Company.group().reduceSum(function (d) { return d.Round_1; });
+var Round_2_Group = Company.group().reduceSum(function (d) { return d.Round_2; });
+var Round_3_Group = Company.group().reduceSum(function (d) { return d.Round_3; });
+var Round_4_Group = Company.group().reduceSum(function (d) { return d.Round_4; });
 
 var yearlyInception = ndx.dimension(function (d) {
       return d3.time.year(d.Inception);
@@ -232,8 +240,8 @@ var FF_caption = svg_FF.append("text")
         .attr("fill", "white")
         .style("opacity", 0.6)
         .attr("font-size", "18px")
-        .attr("x", 10)
-        .attr("y", 50);
+        .attr("x", 140)
+        .attr("y", 85);
         
 var FF_trigger = svg_FF.append("text")
         .attr()
@@ -243,14 +251,14 @@ var FF_trigger = svg_FF.append("text")
         .attr("fill", "white")
         .attr("font-size", "18px")
         .style("opacity", 0.6)
-        .attr("x", width - 65)
-        .attr("y", 50);
+        .attr("x", 210)
+        .attr("y", 85);
   
 var FF = svg_FF.append("image")
-    .attr("x", 10 )
-    .attr("y", 10)
-    .attr("width", 300)
-    .attr("height", 75)
+    .attr("x", 0 )
+    .attr("y", 0)
+    .attr("width", 400)
+    .attr("height", 100)
     .style("opacity", 0.6)
     .attr("xlink:href", FranceFintech)
     .attr("class", "image")
@@ -290,26 +298,29 @@ var FF = svg_FF.append("image")
     });
 
 businessModelPieChart
-      .width(190)
-      .height(190)
-      .radius(93)
+      .width(210)
+      .height(210)
+      .radius(103)
       .innerRadius(0)
       .dimension(businessModel)
       .group(businessModelGroup)
+      .colors(['#04253e','#073559', '#51718a', '#9baebc'])
       .on("filtered", function (chart, filter) {update();});
       
 categoryRowChart
       .width(400)
-      .height(190)
+      .height(260)
       .dimension(category)
       .group(categoryGroup)
+      .colors(['#c06054','#c9776d', '#d28e85', '#dba49d', '#e4bbb6', '#edd1ce', '#f6e8e6'])
       .on("filtered", function (chart, filter) {update();});
       
 inceptionBarChart
-      .width(600)
-      .height(220)
+      .width(402)
+      .height(360)
       .elasticY(true)
-      .x(d3.time.scale().domain([new Date(2000, 0, 1), new Date(2015, 11, 31)]))
+      .renderHorizontalGridLines(true)
+      .x(d3.time.scale().domain([new Date(2006, 0, 1), new Date(2015, 6, 6)]))
 	  .xUnits(d3.time.years)
       .dimension(yearlyInception)
       .group(yearlyInceptionGroup)
@@ -318,29 +329,36 @@ inceptionBarChart
 totalLeve
 	  .group(totalRaisedGroup)
 	  .valueAccessor(total);
+
  
 fundsChart
-      .width(600)
-      .height(220)
-      .elasticY(true)
-	  .xUnits(d3.time.years)
-	  .group(bubbleGroup)
+      .width(420)
+      .height(380)
+//       .elasticY(true)
+//       .renderHorizontalGridLines(true)
+	  .xUnits(d3.time.month)
       .dimension(Company)
-       .colorAccessor(function (d) {
-           return d.category;
-       })
-      .valueAccessor(function (p) {
-          return p.value.latest_round;
-	  })
-      .keyAccessor(function (p) {
-          return p.value.latest;
-      })
-       .radiusValueAccessor(function (p) {
-           return 4;
-       })
-      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 11, 31)]))
-      .y(d3.scale.linear().domain([0, 200]))
-      .r(d3.scale.linear().domain([0, 50]).range([0,100]))
+//        .colorAccessor(function (d) {
+//            return d.category;
+//        })
+       .valueAccessor(function (p) {
+           return p.value;
+ 	  })
+//       .keyAccessor(function (p) {
+//           return p.value.latest;
+//       })
+//        .radiusValueAccessor(function (p) {
+//            return 4;
+//        })
+      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 6, 6)]))
+//      .y(d3.scale.linear().domain([0, 200]))
+ //     .r(d3.scale.linear().domain([0, 50]).range([0,100]))
+      .compose([
+        dc.lineChart(fundsChart).group(Round_1_Group),
+        dc.lineChart(fundsChart).group(Round_2_Group),
+        dc.lineChart(fundsChart).group(Round_3_Group),
+        dc.lineChart(fundsChart).group(Round_4_Group)
+       ])
       .on("filtered", function (chart, filter) {update();});
       
 function update() {

@@ -28,10 +28,9 @@
     <title>They.Are.The.French.FinTech.</title>
   </head>
   
-  <body>
-  
-	  <nav class="navbar navbar-inverse navbar-fixed-top" id="menu-section" >
-		  <div class="container">
+  <body data-spy="scroll" data-target="#menu-section">
+   	  <nav class="navbar navbar-inverse navbar-fixed-top" id="menu-section" >
+  		  <div class="container-fluid">	
 			  <div class="navbar-header">
 			  <a href="https://theassets.co">
 			  <img id="logo" class="img-responsive" src="http://i.imgur.com/gxslvVD.png" alt="The Assets" >
@@ -41,22 +40,95 @@
 			  <span class="icon-bar"></span>
 			  <span class="icon-bar"></span>
 			  </button>
-			  <a class="navbar-brand FrenchFinTech" style="font-family:'Proxima Nova';font-weight:normal" href="#">
-				They.Are.The.French.FinTech
+			  <a class="navbar-brand FrenchFinTech" style="letter-spacing:2px;font-family:'Proxima Nova';font-weight:normal" href="#">
+				THEY.ARE.THE.FRENCH.FINTECH
 			  </a>
 			  </div>
 			  
 			  <div class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
-			  <li class="active" ><a style="font-family:'Proxima Nova';font-weight:normal">THE FRENCH FINTECH</a></li>
-			  <li><a href="http://thefintechjellyfish.theassets.co" style="font-family:'Proxima Nova';font-weight:normal">THE JELLYFISH</a></li>
-			  <li><a href="http://theassets.co" style="font-family:'Proxima Nova';font-weight:normal">THE ASSETS</a></li>
+			  <li class="active" ><a href="#filter" style="font-family:'Proxima Nova';font-weight:normal">FILTER</a></li>
+			  <li><a href="#discover" style="font-family:'Proxima Nova';font-weight:normal">DISCOVER</a></li>
 			  </ul>
 			  </div>
 		  </div>
-	  </nav>
-
+	</nav>
+	<div class="container-fluid">
+		  <div id="corps">
+		  		<section id = "filter">
+				<div class="row">
+					<h3 id="titre1">- F I L T E R -</h3>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="row" id="color-1">
+							<div class="chart-title"><h4>T O T A L &nbsp;&nbsp; R A I S E D</h4></div>
+							<div class="chart" id="montant-leve"><h1 id="total-leve">€<span class="number-display">_</span> MILLION </h1></div>
+						</div>
+						<div class="row" id="color-2">
+							<div class="chart-title"><h4>L A S T &nbsp;&nbsp; R O U N D S</h4></div>
+							<div id="fundsBarChart" class="chart">
+							       <a
+							        class='reset svg' 
+          							href='javascript:fundsChart.filterAll();dc.redraw.all()'
+          							style='display: none; width : 20px; height : 20px;'><img class="svg" src="/static/image/whitecross.svg">
+          							</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row" id="color-3">
+							 <div class="chart-title"><h4>B U S I N E S S &nbsp;&nbsp; M O D E L</h4></div>
+							 <div id="businessModelPieChart" class="chart"></div>
+						</div>
+						<div class="row" id="color-4">
+							 <div class="chart-title"><h4>C A T E G O R Y</h4></div>
+							 <div id="categoryRowChart" class="chart"></div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row" id="color-5">
+							 <div class="chart-title"><h4>F R A N C E &nbsp;&nbsp;  F I N T E C H </h4></div>
+							 <div class="chart" id="FF"></div>
+						</div>
+						<div class="row" id="color-6">
+							 <div class="chart-title"><h4>D A T E &nbsp;&nbsp;O F &nbsp;&nbsp; C R E A T I O N</h4></div>
+							 <div id="inceptionBarChart" class="chart"></div>
+						</div>
+					</div>
+				</div>
+				</section>
+				<section id="discover">
+					<div class="titre"><h3 id="titre2">- D I S C O V E R -</h3></div>
+					<div class="row" id="logo-table">
+						<div class="span12" id="table_logos"></div>
+					</div>
+				</section>
+				<section class="about" id="about">
+					<footer>
+						<div class = "row" id="transition">
+						</div>
+						<div class="row" id="footer">
+							<div class = "span12">
+							    <div class="col-md-2">
+	  								<h4 class="FizBack"> BY <a style="color:black;text-decoration:underline" href="https://twitter.com/FizBack">@FizBack </a></h4>
+							    </div>
+							    <div class="col-md-8">
+							        <h4 class="FizBack"> SEE ALSO </h4>
+	  								<a class="FizBack" href="http://thefintechjellyfish.theassets.co"> <img class="jellyfish" src="https://www.wristbandnation.com/sites/default/upload/artwork/animal/animal6.png"> </a>
+							    </div>
+							    <div class="col-md-2">
+							    	<h4 class="FizBack"> SHARE </h4>
+	  								<a class="FizBack"><img id="twitter" src="http://www.harrietsanders.co.uk/wp-content/uploads/2014/07/Twitter-Black.png"> </a>
+							    </div>
+							</div>
+						</div>
+					</footer>
+				</section>
+	  	   </div>
+	  </div>
 	  
+<!-- 
 	  <div id="infographie">
 	  	
 		  <div class="container-fluid">
@@ -101,13 +173,17 @@
 			</footer>
 	     </div>
 	</div>
+ -->
 
 
+<!-- 
 	<script>	
 		$('#btn-filter').on('click',(function(){
 			$(this).toggleClass('active');
 		}));
 	</script>
+ -->
+
    	<script src="/static/js/app.js" type="text/javascript"></script>
 
   </body>  

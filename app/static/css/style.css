@@ -1,5 +1,7 @@
 /* GENERAL STYLING */
 
+@import url(https://fonts.googleapis.com/css?family=Sanchez);
+
 .image {
   visibility: visible;
   cursor:pointer;
@@ -23,8 +25,14 @@
 	transition: all 1s; 
 }
 
+#logo-table {
+	border-style:solid;
+	border-width : 1px;
+	border-color: #37DEB1;
+}
+
 #logo:hover {
-	transform: rotate(360deg);
+	transform: rotate(720deg);
 }
 
 /* FIN BARRE DE NAVIGATION */
@@ -32,12 +40,54 @@
 
 
 
+/* TITLES */
+
+#titre1 {
+	position: relative;
+	background : #G1G1G1;
+	min-height:65px;
+	color:black;
+	width:100%;
+	padding-left : 20px;
+	padding-bottom : 30px;
+	padding-top : 35px;
+	margin : 0;
+	font-size : 60px;
+	font-weight: lighter;
+	text-align : center;
+}
+
+#titre2 {
+	position: relative;
+	background-color : white;
+	min-height:65px;
+	color:black;
+	width:100%;
+	padding-left : 20px;
+	margin-top : 0px;
+	margin-bottom : 33px;
+	font-size : 60px;
+	font-weight : lighter;
+	text-align : center;
+}
+
+/* END TITLES */
+
 /* TABLE DES LOGOS */
 
 #table_logos {
-	position : absolute;
-	top : 60px;
-	left: 50px;
+	margin-left: 60px;
+	margin-top : 20px;
+	margin-bottom : 20px;
+	margin-right: 50px;
+}
+
+
+
+#corps {
+	position: relative;
+	margin : 0 auto;
+	/* top : 51px; */
 }
 
 
@@ -48,40 +98,9 @@
 
 /* DASHBOARD */
 
-footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-height: 0px;
-    height: 70%;
-    background-color: white;
-    opacity:1;
-    -webkit-transition: max-height 0.5s;
-    transition: max-height 0.5s;
-}
-
-#btn-filter {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 1em;
-    background-color: white;
-    left:48%;
-    -webkit-transition: bottom 0.5s;
-    transition: bottom 0.5s;
-}
-
-#btn-filter.active {
-    bottom: 70%;
-}
-
-#btn-filter.active + footer {
-    max-height: 70%;
-}
 
 .FrenchFinTech {
-	position:absolute;
+	position:relative;
 	left:60px;
 }
 
@@ -93,7 +112,7 @@ footer {
 .dc-chart .pie-slice {
     font-family: "Proxima Nova", Helvetica;
     fill: white;
-    font-size: 12px;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -109,104 +128,184 @@ footer {
     fill: white;
 }
 
-#categoryPieChart {
-  position: absolute;
-  top : 205px;
+#categoryRowChart {
+  position : absolute;
+  bottom : 0px; 
+  left : 15px;
+}
+
+#categoryRowChart .axis text {
+	fill: #A51D0C;
+    font: 18px "Proxima Nova", "Helvetica", sans-serif;
+}
+
+#categoryRowChart .grid-line {
+    fill: none;
+    stroke: #A51D0C;
+    opacity: 0.5;
+    stroke-width:2;
+    shape-rendering: crispEdges;
 }
 
 #businessModelPieChart {
-  position: absolute;
-  left : 220px;
-  top : 17px;
+  position : absolute;
+  left : 105px;
+  top : 55px;
 }
 
 #inceptionBarChart {
-  position: relative;
+ position : absolute;
+ left : 20px;
+ bottom : 10px;
+ overflow:hidden;
+}
 
+#fundsBarChart {
+  position : relative;
+  left : 20px;
+  bottom : 15px;
 }
 
 #color-1 {
  background:#073559;
+ min-height:125px;
 }
 
 #color-2 {
- background:#F1F1F1;
+ background:#0D4F8B;
+  min-height:100px;
 }
 
 #color-3 {
- background:#A51D0C;
- min-height:70px;
+ background:#F1F1F1;
+ color : #073559;
+ min-height:280px;
 }
 
 #color-4 {
- background:#A51D0C;
- min-height:70px;
+ background:#F7F7F7;
+ color : #A51D0C;
+ min-height:301px;
 }
 
 #color-5 {
- background:#0D4F8B;
+ background:#550805;
+  min-height:150px;
 }
 
 #color-6 {
- background:#590805;
-}
-
-/* 
-#tuile-titre-1 {
-  background:#37DEB0;
-}
-
-#tuile-titre-2 {
- background:#00B180;
-}
-
-#tuile-titre-3 {
-  background:#11D29D;
-}
-
-#tuile-titre-4 {
- background:#9C9C9C;
-}
-
-#tuile-titre-5 {
- background:#5FE8C2;
-}
-
-#tuile-titre-6 {
- background:#94F2D8;
-}
- */
-
-.tuile {
-	opacity:0.8;
-	transition: all 0.5s;
-	height:220px;
-}
-
-.mini-tuile {
-	opacity:0.8;
-	transition: all 0.5s;
-	height:110px;
-}
-
-.tuile:hover {
-	opacity:1;
+ background:#A51D0C;
+  min-height:431px;
 }
 
 .chart-title {
-	position:absolute;
+	position : relative;
 	opacity:1;
 	font-weight:lighter;
 	font-family: 22px, "Proxima Nova";
-	left:32px;
-	top:0px;
+	left:16px;
+	top:3px;
 	height:60px;
-	width:100%;
+	width:85%;
 }
 
-#total-raised {
+h1#total-leve {
+	font-size : 52px;
 	position : absolute;
-	top : 115px;
+	width : 340px;
+	margin-left :65px;
+}
+
+#montant-leve {
+	position : absolute;
+	top : 32px;
+	height:150px;
+	color:white;
+}
+
+.chart {
+	position : relative ;
+}
+
+#FF{
+	position : absolute;
+	left : 18px;
+	top : 30px;
+}
+
+.reset {
+	position : relative;
+	top : 20px ;
+	right : 20px;
 }
 
 /* FIN DASHBOARD */
+ 
+ 
+ 
+/* FOOTER  */
+
+section#filter {
+	position : relative;
+	margin : 0;
+	padding-bottom : 20px;
+	padding-top : 51px;
+}
+
+section#discover {
+	position : relative;
+	margin : 0;
+	padding-bottom : 0px;
+	padding-top : 20px;
+}
+
+section#about {
+	position : relative;
+	margin : 0;
+	padding-bottom : 0px;
+	padding-top : 0px;
+}
+
+#footer {
+	position : relative;
+	background-color: rgba(0,0,0,0.1);
+	height : 50px;
+}
+
+.FizBack {
+	position : absolute;
+	margin-top : 16px;
+	margin-left : 20px;
+	font : 20px, "Proxima Nova";
+	color : #073559;
+}
+
+#twitter {
+	position : relative;
+	width : 35px;
+	margin-left: 90px;
+	margin-top :4px;
+}
+
+.jellyfish {
+	position : relative;
+	width : 40px;
+	height : 40px;
+	margin-left : 110px;
+	
+}
+
+/* 
+h4.FizBack {
+	position : relative;
+	
+}
+ */
+
+a.FizBack {
+	margin-top : 5px;
+	margin-left : 5px;
+}
+
+
+/* END FOOTER */

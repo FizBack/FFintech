@@ -99,13 +99,13 @@ background-color: transparent;
 MENU SECTION STYLES
 ============================================================ */
 .navbar-inverse {
-background-color: rgba(0, 0, 0, 0.4);
-border-color: transparent;
+background-color: rgba(0, 0, 0, 0.1);
+border-color: #37DEB1;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
 background-color: transparent;
-border-bottom: 1px solid #37DEB1;
+border-bottom: 1px solid white;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -114,23 +114,25 @@ font-weight: 800;
 padding: 5px 0px;
 letter-spacing: 2px;
 margin: 10px 20px 10px 20px;
-color: #FFF;
+text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+color: #073559;
 }
 
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover {
-color: #fff;
+color: #073559;
+text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
 font-weight: 900;
-font-family: 'Oswald', sans-serif;
+font-family: 'Proxima Nova', sans-serif;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 border-color: transparent;
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-background-color: #37DEB1;
+background-color: #073559;
 }
 .navbar-inverse .navbar-toggle {
-border-color: #37DEB1;
+border-color: #073559;
 }
 
 

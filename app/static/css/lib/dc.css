@@ -3,6 +3,7 @@ div.dc-chart {
 }
 
 .dc-chart rect.bar {
+	fill : #d28e85;
     stroke: none;
     cursor: pointer;
 }
@@ -28,8 +29,7 @@ div.dc-chart {
 
 .dc-chart .pie-slice {
     fill: white;
-    font-size: 12px;
-    font-family: "Proxima Nova", "Helvetica", Sans Serif;
+    font-family:20px, "Proxima Nova", "Helvetica", Sans Serif;
     cursor: pointer;
 }
 
@@ -52,11 +52,13 @@ div.dc-chart {
 .dc-chart .axis path, .axis line {
     fill: none;
     stroke: white;
+    opacity:0;
     shape-rendering: crispEdges;
 }
 
 .dc-chart .axis text {
-    font: 10px "Proxima Nova", "Helvetica", sans-serif;
+	fill: white;
+    font: 18px "Proxima Nova", "Helvetica", sans-serif;
 }
 
 .dc-chart .grid-line {
@@ -69,6 +71,7 @@ div.dc-chart {
 .dc-chart .grid-line line {
     fill: none;
     stroke: white;
+    stroke-width:2;
     opacity: .5;
     shape-rendering: crispEdges;
 }
@@ -136,8 +139,8 @@ div.dc-chart {
 
 .dc-data-count {
     float: right;
-    margin-top: 15px;
-    margin-right: 15px;
+    margin-top: 0px;
+    margin-right: 0px;
 }
 
 .dc-data-count .filter-count {
@@ -201,8 +204,8 @@ div.dc-chart {
 }
 
 .dc-chart g.row text {
-    fill: white;
-    font-size: 12px;
+    fill: #731408;
+    font-size: 14px;
     font-family: "Proxima Nova", "Helvetica", Sans Serif;
     cursor: pointer;
 }
