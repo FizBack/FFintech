@@ -1,4 +1,4 @@
-/* GENERAL STYLING */
+/* GENERAL */
 
 @import url(https://fonts.googleapis.com/css?family=Sanchez);
 
@@ -7,10 +7,13 @@
   cursor:pointer;
 }
 
+#corps {
+	position: relative;
+	margin : 0 auto;
+	/* top : 51px; */
+}
 
-/* END GENERAL STYLING */
-
-
+/* FIN GENERAL */
 
 
 /* BARRE DE NAVIAGATION */
@@ -25,19 +28,11 @@
 	transition: all 1s; 
 }
 
-#logo-table {
-	border-style:solid;
-	border-width : 1px;
-	border-color: #37DEB1;
-}
-
 #logo:hover {
 	transform: rotate(720deg);
 }
 
 /* FIN BARRE DE NAVIGATION */
-
-
 
 
 /* TITLES */
@@ -71,42 +66,74 @@
 	text-align : center;
 }
 
-/* END TITLES */
+/* FIN TITLES */
 
 /* TABLE DES LOGOS */
+
+#logo-table {
+	border-style:solid;
+	border-width : 1px;
+	border-color: #37DEB1;
+}
 
 #table_logos {
 	margin-left: 60px;
 	margin-top : 20px;
 	margin-bottom : 20px;
 	margin-right: 50px;
+	min-height : 400px;
 }
-
-
-
-#corps {
-	position: relative;
-	margin : 0 auto;
-	/* top : 51px; */
-}
-
 
 /* FIN TABLE DES LOGOS */
 
 
-
-
 /* DASHBOARD */
 
-
-.FrenchFinTech {
-	position:relative;
-	left:60px;
+.chart-title {
+	position : relative;
+	opacity:1;
+	font-weight:lighter;
+	font-family: 22px, "Proxima Nova";
+	left:16px;
+	top:3px;
+	height:60px;
+	width:85%;
 }
 
-#filtre-logo {
-	width: 40px;
-	height: 40px;
+#color-1 {
+ background:#073559;
+ min-height:125px;
+}
+
+#color-2 {
+ background:#0D4F8B;
+  min-height:100px;
+}
+
+#color-3 {
+ background:#F1F1F1;
+ color : #073559;
+ min-height:280px;
+}
+
+#color-4 {
+ background:#F7F7F7;
+ color : #A51D0C;
+ min-height:301px;
+}
+
+#color-5 {
+ background:#550805;
+  min-height:150px;
+}
+
+#color-6 {
+ background:#A51D0C;
+  min-height:431px;
+}
+
+.chart {
+	position : relative ;
 }
 
 .dc-chart .pie-slice {
@@ -126,6 +153,11 @@
     stroke: none;
     fill-opacity: .5;
     fill: white;
+}
+
+.FrenchFinTech {
+	position:relative;
+	left:60px;
 }
 
 #categoryRowChart {
@@ -166,49 +198,6 @@
   bottom : 15px;
 }
 
-#color-1 {
- background:#073559;
- min-height:125px;
-}
-
-#color-2 {
- background:#0D4F8B;
-  min-height:100px;
-}
-
-#color-3 {
- background:#F1F1F1;
- color : #073559;
- min-height:280px;
-}
-
-#color-4 {
- background:#F7F7F7;
- color : #A51D0C;
- min-height:301px;
-}
-
-#color-5 {
- background:#550805;
-  min-height:150px;
-}
-
-#color-6 {
- background:#A51D0C;
-  min-height:431px;
-}
-
-.chart-title {
-	position : relative;
-	opacity:1;
-	font-weight:lighter;
-	font-family: 22px, "Proxima Nova";
-	left:16px;
-	top:3px;
-	height:60px;
-	width:85%;
-}
-
 h1#total-leve {
 	font-size : 52px;
 	position : absolute;
@@ -221,10 +210,6 @@ h1#total-leve {
 	top : 32px;
 	height:150px;
 	color:white;
-}
-
-.chart {
-	position : relative ;
 }
 
 #FF{
@@ -242,8 +227,7 @@ h1#total-leve {
 /* FIN DASHBOARD */
  
  
- 
-/* FOOTER  */
+/* TAILLE SECTIONS MAIN */
 
 section#filter {
 	position : relative;
@@ -258,6 +242,11 @@ section#discover {
 	padding-bottom : 0px;
 	padding-top : 20px;
 }
+
+/* FIN TAILLE SECTIONS MAIN */
+
+
+/* FOOTER  */
 
 section#about {
 	position : relative;
@@ -274,38 +263,36 @@ section#about {
 
 .FizBack {
 	position : absolute;
-	margin-top : 16px;
 	margin-left : 20px;
 	font : 20px, "Proxima Nova";
 	color : #073559;
 }
 
-#twitter {
+h4.FizBack {
+	margin-top : 16px;
+}
+
+.twitter {
 	position : relative;
 	width : 35px;
-	margin-left: 90px;
-	margin-top :4px;
+	margin-left: 75px;
+	margin-top :10px;
 }
 
 .jellyfish {
 	position : relative;
-	width : 40px;
-	height : 40px;
-	margin-left : 110px;
-	
+	width : 45px;
+	height : 45px;
+	margin-left : 90px;
+	margin-top :3px;
 }
 
-/* 
-h4.FizBack {
+.github {
 	position : relative;
-	
-}
- */
-
-a.FizBack {
-	margin-top : 5px;
-	margin-left : 5px;
+	width : 50px;
+	height : 50px;
+	margin-left : 55px;
+	margin-top :0px;
 }
 
-
-/* END FOOTER */
+/* FIN FOOTER */

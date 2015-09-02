@@ -6,10 +6,6 @@ var margin = { top: 60, bottom: 60, left: 60, right: 60 };
 
 var FranceFintech = "http://static1.squarespace.com/static/556da4b8e4b0f81335bf7dab/t/55785ab1e4b00fe50a288048/1434355652756/?format=1500w";
 var entonnoir = "http://s30.postimg.org/onqkun8qp/basic2_178_filter_512.png";
-
-var svg_logo = d3.select("#table_logos").append("svg")
-    .attr("width", 1200 - margin.right - margin.left)
-    .attr("height", 700 - margin.top - margin.bottom);
     
 var svg_filtres = d3.select("#filtres").append("svg:svg");
     		
@@ -361,8 +357,19 @@ fundsChart
        ])
       .on("filtered", function (chart, filter) {update();});
       
+$(window).resize(function() {
+    update();
+});      
+   
 function update() {
-
+    width_logo = $("#table_logos").parent().width();
+    height_logo = $("#table_logos").parent().height();
+    var svg_logo = d3.select("#table_logos").append("svg")
+    			.attr("width", width_logo)
+    			.attr("height", height_logo);
+	
+	console.log(width_logo);
+	
 d3.select(".logo_table").remove();
 
 logo_table = svg_logo.append("g").attr("class", "logo_table");
@@ -377,10 +384,10 @@ logo_table.selectAll("image")
       })
       .attr("class", "image")
       .attr("x", function(d,i){
-        return i % 9 * (width - margin.right - margin.left) / 9 ;
+        return i % 9 * (width_logo - margin.right - margin.left) / 9 ;
       })
       .attr("y", function(d,i){
-        return Math.floor(i/9) % 8 * (height - margin.top - margin.bottom) / 8 ;
+        return Math.floor(i/9) % 8 * (height_logo - margin.top - margin.bottom) / 8 ;
       })
       .attr("width", 0)
       .attr("height", 0)
@@ -395,14 +402,14 @@ logo_table.selectAll("image")
           informations.append("image")
               .attr("width", 200)
               .attr("height", 100)
-              .attr("x", width * 2 /1.5)
-              .attr("y", height / 2 + 35)
+              .attr("x", width_logo * 2 /1.5)
+              .attr("y", height_logo / 2 + 35)
               .attr("xlink:href", startup.Logo)
               .transition()
               .delay(0)
               .duration(500)
               .attr("x", function(d,i){
-                return width / 2 + 40;
+                return width_logo / 2 + 40;
               })
               .attr("width", 55)
               .attr("height", 40);
@@ -412,11 +419,18 @@ logo_table.selectAll("image")
       return i * 20;
       })
     .duration(500)
-    .attr("width", (width - margin.right - margin.left) / 9 / 1.15)
-    .attr("height", (height - margin.top - margin.bottom) / 8 / 1.15);;
+    .attr("width", (width_logo - margin.right - margin.left) / 9 / 1.15)
+    .attr("height", (height_logo - margin.top - margin.bottom) / 8 / 1.15);;
 }
 
 update();
+
+
+
+
+
+
+
 
 dc.renderAll();
 }

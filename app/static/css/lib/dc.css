@@ -3,7 +3,8 @@ div.dc-chart {
 }
 
 .dc-chart rect.bar {
-	fill : #d28e85;
+	/* fill : #d28e85; */
+	fill : #9baebc;
     stroke: none;
     cursor: pointer;
 }
