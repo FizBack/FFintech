@@ -1,8 +1,10 @@
 var width = $(window).width(),
-    height = $(window).height(),
-    goldenNumber = 1.618;
+    height = $(window).height();
     
-var margin = { top: 60, bottom: 60, left: 60, right: 60 };
+var width_logo = 140, //marge de 20 pour la largeur
+	height_logo = 60; // 15 pour la hauteur
+    
+var margin = { top: 0, bottom: 0, left: 0, right: 0 };
 
 var FranceFintech = "http://static1.squarespace.com/static/556da4b8e4b0f81335bf7dab/t/55785ab1e4b00fe50a288048/1434355652756/?format=1500w";
 var entonnoir = "http://s30.postimg.org/onqkun8qp/basic2_178_filter_512.png";
@@ -312,11 +314,11 @@ categoryRowChart
       .on("filtered", function (chart, filter) {update();});
       
 inceptionBarChart
-      .width(402)
+      .width(422)
       .height(360)
       .elasticY(true)
       .renderHorizontalGridLines(true)
-      .x(d3.time.scale().domain([new Date(2006, 0, 1), new Date(2015, 6, 6)]))
+      .x(d3.time.scale().domain([new Date(2007, 0, 1), new Date(2015, 6, 6)]))
 	  .xUnits(d3.time.years)
       .dimension(yearlyInception)
       .group(yearlyInceptionGroup)
@@ -356,25 +358,40 @@ fundsChart
         dc.lineChart(fundsChart).group(Round_4_Group)
        ])
       .on("filtered", function (chart, filter) {update();});
-      
-$(window).resize(function() {
-    update();
-});      
+   
+window.onresize = function() {
+width = $(window).width(),
+height = $(window).height();
+update();
+} ;      
    
 function update() {
-    width_logo = $("#table_logos").parent().width();
-    height_logo = $("#table_logos").parent().height();
+    
+	var nb_companies = (Company.bottom(Infinity)).length;
+	
+	d3.select(".logo_table").remove();
+	d3.select("svg_logo").remove();
+	$(".svg_truc").remove();
+	
+	var nb_width = Math.floor(width / width_logo);
+	var nb_height = Math.ceil(nb_companies / nb_width);
+	
+	console.log(nb_width);
+	console.log(nb_height);
+	
+	$("div#table_logos").css("height",nb_height * height_logo + 20 + "px");
+
     var svg_logo = d3.select("#table_logos").append("svg")
-    			.attr("width", width_logo)
-    			.attr("height", height_logo);
+    			.attr("class", "svg_truc")
+    			.attr("width", width)
+    			.attr("height", nb_height * height_logo + 20);
 	
-	console.log(width_logo);
-	
-d3.select(".logo_table").remove();
 
-logo_table = svg_logo.append("g").attr("class", "logo_table");
+	var logo_table = svg_logo.append("g")
+    			.attr("class", "logo_table")
+    			.attr("transform", "translate(" + (width - nb_width * width_logo) / 2 +  ",10)");
 
-logo_table.selectAll("image")
+	logo_table.selectAll("image")
       .data(Company.bottom(Infinity))
       .enter()
       .append("image")
@@ -384,52 +401,64 @@ logo_table.selectAll("image")
       })
       .attr("class", "image")
       .attr("x", function(d,i){
-        return i % 9 * (width_logo - margin.right - margin.left) / 9 ;
+        return i % nb_width * width_logo ;
       })
       .attr("y", function(d,i){
-        return Math.floor(i/9) % 8 * (height_logo - margin.top - margin.bottom) / 8 ;
+        return Math.floor(i/nb_width) % nb_height * height_logo ;
       })
       .attr("width", 0)
       .attr("height", 0)
       .on("click", function(){
-          init_message.remove();
-          informations.remove();
+      
+      	  var monthNames = ["January", "February", "March", "April", "May", "June",
+ 			 "July", "August", "September", "October", "November", "December"];
           
-          informations = svg.append("g").attr("class", "info");
-        
-          var startup = d3.select(this)[0][0].__data__;
+          var element = d3.select(this);
           
-          informations.append("image")
-              .attr("width", 200)
-              .attr("height", 100)
-              .attr("x", width_logo * 2 /1.5)
-              .attr("y", height_logo / 2 + 35)
-              .attr("xlink:href", startup.Logo)
-              .transition()
-              .delay(0)
-              .duration(500)
-              .attr("x", function(d,i){
-                return width_logo / 2 + 40;
-              })
-              .attr("width", 55)
-              .attr("height", 40);
+          console.log(element[0][0].__data__.Company);
+          
+          $(".modal-company").text("- " + element[0][0].__data__.Company + " -");
+          $(".modal-logo").attr("src", element[0][0].__data__.Logo);
+          $(".modal-websitelink").attr("href", element[0][0].__data__.Website);
+          
+          var FFmembership = element[0][0].__data__.FF_membership ? "Yes" : "No" ;
+          
+          var investors_1 = (element[0][0].__data__.Investors_1 != "Undisclosed" && element[0][0].__data__.Investors_1 != undefined) ? element[0][0].__data__.Investors_1 : "undisclosed investors" ;
+          var investors_2 = (element[0][0].__data__.Investors_2 != "Undisclosed" && element[0][0].__data__.Investors_2 != undefined) ? element[0][0].__data__.Investors_2 : "undisclosed investors" ;
+          var investors_3 = (element[0][0].__data__.Investors_3 != "Undisclosed" && element[0][0].__data__.Investors_3 != undefined) ? element[0][0].__data__.Investors_3 : "undisclosed investors" ;
+          var investors_4 = (element[0][0].__data__.Investors_4 != "Undisclosed" && element[0][0].__data__.Investors_4 != undefined) ? element[0][0].__data__.Investors_4 : "undisclosed investors" ;
+          
+          $(".modal-FFmembership").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; member : " + FFmembership );
+          $(".modal-creation").text("Date of creation : " + monthNames[element[0][0].__data__.Inception.getMonth()] + " " + element[0][0].__data__.Inception.getFullYear());
+          $(".modal-CEO").html("CEO : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + element[0][0].__data__.CEO);
+          $(".modal-linkedin").attr("href", element[0][0].__data__.Linkedin);
+          $(".modal-category").text("Category : " + element[0][0].__data__.Category);
+          $(".modal-BM").text("Business type : " + element[0][0].__data__.Business_model);
+          $(".modal-abstract").text(element[0][0].__data__.Abstract);
+          $(".modal-headquarters").text("Headquarters : " + element[0][0].__data__.Headquarters);
+          if(element[0][0].__data__.Competition) { $(".modal-competition").text("Competition : " + element[0][0].__data__.Competition) };
+          if(element[0][0].__data__.Round_1 != "0") {$(".modal-round1").text("Seed round : €" + element[0][0].__data__.Round_1 + "m led by " + investors_1 + " on " + monthNames[element[0][0].__data__.Date_1.getMonth()] + " " + element[0][0].__data__.Date_1.getFullYear()) };
+          if(element[0][0].__data__.Round_2 != "0") {$(".modal-round2").text("Series A : €" + element[0][0].__data__.Round_2 + "m led by " + investors_2 + " on " + monthNames[element[0][0].__data__.Date_2.getMonth()] + " " + element[0][0].__data__.Date_2.getFullYear()) };
+		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " on " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) };
+		  if(element[0][0].__data__.Round_4 != "0") {$(".modal-round4").text("Series C : €" + element[0][0].__data__.Round_4 + "m led by " + investors_4 + " on " + monthNames[element[0][0].__data__.Date_4.getMonth()] + " " + element[0][0].__data__.Date_4.getFullYear()) };
+          
+          $(".modal-website").html("<a href='element[0][0].__data__.Website'>Website</a>");
+          
+          $('#myModal').modal('toggle'); 
+
+
+
        })
     .transition()
     .delay(function(d,i){
       return i * 20;
       })
     .duration(500)
-    .attr("width", (width_logo - margin.right - margin.left) / 9 / 1.15)
-    .attr("height", (height_logo - margin.top - margin.bottom) / 8 / 1.15);;
+    .attr("width", 120)
+    .attr("height", 45);
 }
 
 update();
-
-
-
-
-
-
 
 
 dc.renderAll();

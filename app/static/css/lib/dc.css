@@ -59,7 +59,22 @@ div.dc-chart {
 
 .dc-chart .axis text {
 	fill: white;
-    font: 18px "Proxima Nova", "Helvetica", sans-serif;
+    font: 14px "Proxima Nova", "Helvetica", sans-serif;
+    font-weight : lighter;
+}
+
+.dc-chart .x.axis text {/* 
+
+    text-anchor: end !important;
+ */
+    transform: rotate(-20deg) translate(0px, 5px);
+
+}
+
+
+.dc-chart {
+    margin:0;
+    padding:0;
 }
 
 .dc-chart .grid-line {
@@ -156,9 +171,6 @@ div.dc-chart {
     font-family: "Proxima Nova", "Helvetica", Sans Serif;
 }
 
-.dc-data-table {
-}
-
 .dc-chart g.state {
     cursor: pointer;
 }
@@ -171,14 +183,8 @@ div.dc-chart {
     stroke: white;
 }
 
-.dc-chart g.selected path {
-}
-
 .dc-chart g.deselected path {
     fill: grey;
-}
-
-.dc-chart g.selected text {
 }
 
 .dc-chart g.deselected text {

@@ -7,6 +7,17 @@
   cursor:pointer;
 }
 
+.svg-cross {
+	width : 32px;
+	height : 32px;
+	transition: 0.5s;
+}
+
+.svg-cross:hover {
+	transform: rotate(540deg)
+}
+
+
 #corps {
 	position: relative;
 	margin : 0 auto;
@@ -25,7 +36,7 @@
 	position:absolute;
 	left : 20px;
 	top : 8px;
-	transition: all 1s; 
+	transition: 1s; 
 }
 
 #logo:hover {
@@ -74,18 +85,90 @@
 	border-style:solid;
 	border-width : 1px;
 	border-color: #37DEB1;
+	border-right:0px;
+	border-left: 0px;
 }
 
 #table_logos {
-	margin-left: 60px;
-	margin-top : 20px;
-	margin-bottom : 20px;
-	margin-right: 50px;
-	min-height : 400px;
+	margin-left: 0px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	margin-right: 0px;
+}
+
+.logos {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* FIN TABLE DES LOGOS */
 
+/* MODAL */
+
+.close .svg-cross {
+	margin-top : 12px;
+	margin-right : 14px;
+}
+
+h4.modal-txt {
+	color : #073559;
+	font: 20px "Proxima Nova", Helvetica;
+	margin-left : 15px;
+}
+
+.modal-company {
+	color : #073559;
+	font: 32px "Proxima Nova", Helvetica;
+	text-align : center;
+	margin-bottom : 45px;
+}
+
+img.modal-logo {
+    border: none;
+	max-height:100%;
+	max-width:100%;
+}
+
+h4.modal-abstract {
+	margin-bottom : 0px;
+	font : 24px "Proxima Nova";
+	text-align : center;
+}
+
+.modal-padding {
+	margin-top : 0px;
+}
+
+.container-logo {
+	position :absolute;
+	left : 20px;
+	top : 20px;
+	width : 150px;
+	height: 70px;
+}
+
+a.modal-linkedin {
+	position :relative;
+	top : 98px;
+	left : -76px;
+}
+
+.linkedin-logo {
+	position:relative;
+	top : 0px;
+	left : 0px;
+}
+
+.FF-mini {
+	position : relative;
+	height : 40px;
+	left :14px;
+	top : 40px;
+}
+
+
+/* FIN MODAL */
 
 /* DASHBOARD */
 
@@ -236,7 +319,7 @@ section#filter {
 	padding-top : 51px;
 }
 
-section#discover {
+section#explore {
 	position : relative;
 	margin : 0;
 	padding-bottom : 0px;
@@ -258,7 +341,6 @@ section#about {
 #footer {
 	position : relative;
 	background-color: rgba(0,0,0,0.1);
-	height : 50px;
 }
 
 .FizBack {
