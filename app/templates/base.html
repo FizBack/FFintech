@@ -13,7 +13,11 @@
   	<script src="/static/js/lib/crossfilter.js" type="text/javascript"></script>
   	<script src="/static/js/lib/dc.js" type="text/javascript"></script>
  	<script src="/static/js/lib/bootstrap.js" type="text/javascript"></script>
+ 	
+<!--  	Ne pas oublier les 2 suivants si inutiles    -->
  	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+ 	<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+<!--  	////////////////////////////////////////////// -->
  	
  	<link href="/static/css/lib/dc.css" rel="stylesheet"/>
 	<link href="/static/css/lib/bootstrap.css" rel="stylesheet" />
@@ -68,11 +72,13 @@
 						<div class="row" id="color-2">
 							<div class="chart-title"><h4>L A S T &nbsp;&nbsp; R O U N D S</h4></div>
 							<div id="fundsBarChart" class="chart">
-							       <a
+							  <!-- 
+     <a
 							        class='reset svg' 
           							href='javascript:fundsChart.filterAll();dc.redraw.all()'
           							style='display: none; width : 20px; height : 20px;'><img class="svg-cross" src="/static/image/whitecross.svg">
           							</a>
+ -->
 							</div>
 						</div>
 					</div>
@@ -165,6 +171,24 @@
 	  </div>
 
    	<script src="/static/js/app.js" type="text/javascript"></script>
+   	
+   	
+   	<script>
+   	
+   $(".navbar-collapse ul li a[href^='#']").on('click', function(e) {
+
+   e.preventDefault();
+
+   var hash = this.hash;
+
+   $('html, body').animate({
+       scrollTop: $(hash).offset().top
+     }, 300, function(){
+       window.location.hash = hash;
+     });
+	});   	
+   	
+   	</script>
 
   </body>  
 </html>

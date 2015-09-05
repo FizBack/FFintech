@@ -20,28 +20,40 @@ function graphiques(data) {
 var dateFormat = d3.time.format("%b-%y");
 var numberFormat = d3.format('.2f');
 
+// data.forEach(function (d) {
+//   if (d.Round_4 !== 0){
+//       d.Date_1 = dateFormat.parse(d.Date_1);
+//       d.Date_2 = dateFormat.parse(d.Date_2);
+//       d.Date_3 = dateFormat.parse(d.Date_3);
+//       d.Date_4 = dateFormat.parse(d.Date_4);
+//       d.Inception = dateFormat.parse(d.Inception);
+//   } else if(d.Round_3 !== 0) {
+//       d.Date_1 = dateFormat.parse(d.Date_1);
+//       d.Date_2 = dateFormat.parse(d.Date_2);
+//       d.Date_3 = dateFormat.parse(d.Date_3);
+//       d.Inception = dateFormat.parse(d.Inception);
+//   } else if(d.Round_2 !== 0) {
+//       d.Date_1 = dateFormat.parse(d.Date_1);
+//       d.Date_2 = dateFormat.parse(d.Date_2);
+//       d.Inception = dateFormat.parse(d.Inception);
+//   } else if(d.Round_1 !== 0) {
+//       d.Date_1 = dateFormat.parse(d.Date_1);
+//       d.Inception = dateFormat.parse(d.Inception);
+//   } else {
+//   	  d.Inception = dateFormat.parse(d.Inception);
+//   }
+//   });
+
 data.forEach(function (d) {
-  if (d.Round_4 !== 0){
       d.Date_1 = dateFormat.parse(d.Date_1);
       d.Date_2 = dateFormat.parse(d.Date_2);
       d.Date_3 = dateFormat.parse(d.Date_3);
       d.Date_4 = dateFormat.parse(d.Date_4);
+//       d.Round_1 = numberFormat(d.Round_1);
+//       d.Round_2 = numberFormat(d.Round_2);
+//       d.Round_3 = numberFormat(d.Round_3);
+//       d.Round_4 = numberFormat(d.Round_4);
       d.Inception = dateFormat.parse(d.Inception);
-  } else if(d.Round_3 !== 0) {
-      d.Date_1 = dateFormat.parse(d.Date_1);
-      d.Date_2 = dateFormat.parse(d.Date_2);
-      d.Date_3 = dateFormat.parse(d.Date_3);
-      d.Inception = dateFormat.parse(d.Inception);
-  } else if(d.Round_2 !== 0) {
-      d.Date_1 = dateFormat.parse(d.Date_1);
-      d.Date_2 = dateFormat.parse(d.Date_2);
-      d.Inception = dateFormat.parse(d.Inception);
-  } else if(d.Round_1 !== 0) {
-      d.Date_1 = dateFormat.parse(d.Date_1);
-      d.Inception = dateFormat.parse(d.Inception);
-  } else {
-  	  d.Inception = dateFormat.parse(d.Inception);
-  }
   });
 
 
@@ -49,7 +61,6 @@ var businessModelPieChart = dc.pieChart('#businessModelPieChart');
 var categoryRowChart = dc.rowChart('#categoryRowChart');
 var inceptionBarChart = dc.barChart('#inceptionBarChart');
 var totalLeve = dc.numberDisplay('#montant-leve');
-// var fundsChart = dc.bubbleChart('#fundsBarChart');
 var fundsChart = dc.compositeChart("#fundsBarChart");
 
 var ndx = crossfilter(data);
@@ -57,6 +68,22 @@ var all = ndx.groupAll();
 
 var Company = ndx.dimension(function(d){
   return d.Company;
+})
+
+var date_1 = ndx.dimension(function(d){
+  return d3.time.year(d.Date_1);
+})
+
+var date_2 = ndx.dimension(function(d){
+  return d3.time.year(d.Date_2);
+})
+
+var date_3 = ndx.dimension(function(d){
+  return d3.time.year(d.Date_3);
+})
+
+var date_4 = ndx.dimension(function(d){
+  return d3.time.year(d.Date_4);
 })
 
 var Round_1_Group = Company.group().reduceSum(function (d) { return d.Round_1; });
@@ -325,39 +352,52 @@ inceptionBarChart
       .on("filtered", function (chart, filter) {update();});
       
 totalLeve
+	  .formatNumber(d3.format(".1f"))
 	  .group(totalRaisedGroup)
 	  .valueAccessor(total);
 
+var date_1_group = date_1.group().reduceSum(function(d){ return d.Round_1 ;}) ;
+var date_2_group = date_2.group().reduceSum(function(d){ return d.Round_2 ;}) ;
+var date_3_group = date_3.group().reduceSum(function(d){ return d.Round_3 ;}) ; 
+var date_4_group = date_4.group().reduceSum(function(d){ return d.Round_4 ;}) ;
+
+var Round1 = dc.lineChart(fundsChart)
+      .dimension(date_1)
+      .group(date_1_group, "Seed")
+      .valueAccessor(function (d) {
+            return d.value;
+        });
+        
+var Round2 = dc.lineChart(fundsChart)
+      .dimension(date_2)
+      .group(date_2_group, "Seed")
+      .valueAccessor(function (d) {
+            return d.value;
+        });
+
+var Round3 = dc.lineChart(fundsChart)
+      .dimension(date_3)
+      .group(date_3_group, "Seed")
+      .valueAccessor(function (d) {
+            return d.value;
+        });
+
+var Round4 = dc.lineChart(fundsChart)
+      .dimension(date_4)
+      .group(date_4_group, "Seed")
+      .valueAccessor(function (d) {
+            return d.value;
+        });
+    
  
 fundsChart
+	  //.renderArea(true)
+      //.renderHorizontalGridLines(true)
       .width(420)
       .height(380)
-//       .elasticY(true)
-//       .renderHorizontalGridLines(true)
-	  .xUnits(d3.time.month)
-      .dimension(Company)
-//        .colorAccessor(function (d) {
-//            return d.category;
-//        })
-       .valueAccessor(function (p) {
-           return p.value;
- 	  })
-//       .keyAccessor(function (p) {
-//           return p.value.latest;
-//       })
-//        .radiusValueAccessor(function (p) {
-//            return 4;
-//        })
-      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 6, 6)]))
-//      .y(d3.scale.linear().domain([0, 200]))
- //     .r(d3.scale.linear().domain([0, 50]).range([0,100]))
-      .compose([
-        dc.lineChart(fundsChart).group(Round_1_Group),
-        dc.lineChart(fundsChart).group(Round_2_Group),
-        dc.lineChart(fundsChart).group(Round_3_Group),
-        dc.lineChart(fundsChart).group(Round_4_Group)
-       ])
-      .on("filtered", function (chart, filter) {update();});
+	  .compose([Round1, Round2, Round3, Round4])
+      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 0, 1)]))
+      .on("filtered", function (chart, filter) {update();});      
    
 window.onresize = function() {
 width = $(window).width(),
@@ -371,7 +411,7 @@ function update() {
 	
 	d3.select(".logo_table").remove();
 	d3.select("svg_logo").remove();
-	$(".svg_truc").remove();
+	$(".svg_img").remove();
 	
 	var nb_width = Math.floor(width / width_logo);
 	var nb_height = Math.ceil(nb_companies / nb_width);
@@ -379,10 +419,11 @@ function update() {
 	console.log(nb_width);
 	console.log(nb_height);
 	
+	$("div#table_logos").css("transition","height 2s");
 	$("div#table_logos").css("height",nb_height * height_logo + 20 + "px");
 
     var svg_logo = d3.select("#table_logos").append("svg")
-    			.attr("class", "svg_truc")
+    			.attr("class", "svg_img")
     			.attr("width", width)
     			.attr("height", nb_height * height_logo + 20);
 	

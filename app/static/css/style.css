@@ -284,8 +284,8 @@ a.modal-linkedin {
 h1#total-leve {
 	font-size : 52px;
 	position : absolute;
-	width : 340px;
-	margin-left :65px;
+	width : 370px;
+	margin-left :35px;
 }
 
 #montant-leve {
@@ -305,6 +305,15 @@ h1#total-leve {
 	position : relative;
 	top : 20px ;
 	right : 20px;
+}
+
+#inceptionBarChart {
+	overflow:hidden;
+	max-width : 95%
+}
+
+svg#inceptionBarChart {
+	overflow:hidden;
 }
 
 /* FIN DASHBOARD */
