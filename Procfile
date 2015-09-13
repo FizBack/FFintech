@@ -1,1 +1,1 @@
-web: python ./run.py —-log-file=- -p $PORT
+web: python ./run.py —-log-file=-
