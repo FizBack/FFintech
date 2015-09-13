@@ -1,6 +1,11 @@
 var width = $(window).width(),
     height = $(window).height();
     
+function setWidth(width){
+	if(width > 992) { return $(window).width() / 3 - 20 }
+	else { return $(window).width() - 20}
+}
+    
 var width_logo = 140, //marge de 20 pour la largeur
 	height_logo = 60; // 15 pour la hauteur
     
@@ -20,48 +25,20 @@ function graphiques(data) {
 var dateFormat = d3.time.format("%b-%y");
 var numberFormat = d3.format('.2f');
 
-// data.forEach(function (d) {
-//   if (d.Round_4 !== 0){
-//       d.Date_1 = dateFormat.parse(d.Date_1);
-//       d.Date_2 = dateƒFormat.parse(d.Date_2);
-//       d.Date_3 = dateFormat.parse(d.Date_3);
-//       d.Date_4 = dateFormat.parse(d.Date_4);
-//       d.Inception = dateFormat.parse(d.Inception);
-//   } else if(d.Round_3 !== 0) {
-//       d.Date_1 = dateFormat.parse(d.Date_1);
-//       d.Date_2 = dateFormat.parse(d.Date_2);
-//       d.Date_3 = dateFormat.parse(d.Date_3);
-//       d.Inception = dateFormat.parse(d.Inception);
-//   } else if(d.Round_2 !== 0) {
-//       d.Date_1 = dateFormat.parse(d.Date_1);
-//       d.Date_2 = dateFormat.parse(d.Date_2);
-//       d.Inception = dateFormat.parse(d.Inception);
-//   } else if(d.Round_1 !== 0) {
-//       d.Date_1 = dateFormat.parse(d.Date_1);
-//       d.Inception = dateFormat.parse(d.Inception);
-//   } else {
-//   	  d.Inception = dateFormat.parse(d.Inception);
-//   }
-//   });
-
 data.forEach(function (d) {
       d.Date_1 = dateFormat.parse(d.Date_1);
       d.Date_2 = dateFormat.parse(d.Date_2);
       d.Date_3 = dateFormat.parse(d.Date_3);
       d.Date_4 = dateFormat.parse(d.Date_4);
-//       d.Round_1 = numberFormat(d.Round_1);
-//       d.Round_2 = numberFormat(d.Round_2);
-//       d.Round_3 = numberFormat(d.Round_3);
-//       d.Round_4 = numberFormat(d.Round_4);
       d.Inception = dateFormat.parse(d.Inception);
   });
 
 
-var businessModelPieChart = dc.pieChart('#businessModelPieChart');
-var categoryRowChart = dc.rowChart('#categoryRowChart');
-var inceptionBarChart = dc.barChart('#inceptionBarChart');
-var totalLeve = dc.numberDisplay('#montant-leve');
-var fundsChart = dc.lineChart("#fundsBarChart");
+businessModelPieChart = dc.pieChart('#businessModelPieChart');
+categoryRowChart = dc.rowChart('#categoryRowChart');
+inceptionBarChart = dc.barChart('#inceptionBarChart');
+totalLeve = dc.numberDisplay('#montant-leve');
+fundsChart = dc.barChart("#fundsBarChart");
 
 var ndx = crossfilter(data);
 var all = ndx.groupAll();
@@ -70,67 +47,15 @@ var Company = ndx.dimension(function(d){
   return d.Company;
 })
 
-var date_1 = ndx.dimension(function(d){
-  return d3.time.year(d.Date_1);
-})
-
-var date_2 = ndx.dimension(function(d){
-  return d3.time.year(d.Date_2);
-})
-
-var date_3 = ndx.dimension(function(d){
-  return d3.time.year(d.Date_3);
-})
-
-var date_4 = ndx.dimension(function(d){
-  return d3.time.year(d.Date_4);
-})
-
-var Round_1_Group = Company.group().reduceSum(function (d) { return d.Round_1; });
-var Round_2_Group = Company.group().reduceSum(function (d) { return d.Round_2; });
-var Round_3_Group = Company.group().reduceSum(function (d) { return d.Round_3; });
-var Round_4_Group = Company.group().reduceSum(function (d) { return d.Round_4; });
-
 var yearlyInception = ndx.dimension(function (d) {
       return d3.time.year(d.Inception);
   });
   
 var yearlyInceptionGroup = yearlyInception.group();
-  
-// var totalRaised = ndx.dimension(function (d) {
-//       return d.Round_1 + d.Round_2 + d.Round_3 + d.Round_4;
-//   });
-  
-var totalRaisedGroup = ndx.groupAll().reduce( 
-          function (p, v) {
-              ++p.n;
-              p.tot += v.Round_1 + v.Round_2 + v.Round_3 + v.Round_4 ;
-              return p;
-          },
-          function (p, v) {
-              --p.n;
-              p.tot -= v.Round_1 + v.Round_2 + v.Round_3 + v.Round_4;
-              return p;
-          },
-          function () { return {n:0,tot:0}; }
-);
 
 var total = function(d) {
       return d.n ? d.tot : 0;
       };
-  
-// var lastRaised = ndx.dimension(function (d) {
-//   if (d.Round_4 !== 0) {
-//       return d3.time.month(d.Date_4);
-//   } else if (d.Round_3 !== 0) {
-//       return d3.time.month(d.Date_3);
-//   } else if (d.Round_2 !== 0) {
-//       return d3.time.month(d.Date_2);
-//   } else if(d.Round_1 !== 0){
-//       return d3.time.month(d.Date_1);
-//   } else {
-//  	  return new Date(1900, 0, 1);
-//   }});
 
 var bubbleGroup = Company.group().reduce(
 		//  The first parameter is a transient instance of the reduced object. The second object is the current record
@@ -307,7 +232,8 @@ var FF = svg_FF.append("image")
       FF_trigger.transition().duration(400).text("O N");
       FF_caption.transition().duration(400).style("opacity", "1");
       FranceFintechDimension.filterExact("X");
-      update()
+      update_logo();
+      update_funds();
       dc.redrawAll();
       toggle_FF = 1;
       }
@@ -316,7 +242,8 @@ var FF = svg_FF.append("image")
       FF_caption.transition().duration(400).style("opacity", "0.6");
       FF_trigger.transition().duration(400).text("O F F").style("opacity", "0.6");
       FranceFintechDimension.filterAll();
-      update()
+      update_logo();
+      update_funds();
       dc.redrawAll();
       toggle_FF = 0;
       }
@@ -330,246 +257,190 @@ businessModelPieChart
       .dimension(businessModel)
       .group(businessModelGroup)
       .colors(['#04253e','#073559', '#51718a', '#9baebc'])
-      .on("filtered", function (chart, filter) {update();});
+      .on("filtered", function (chart, filter) {update_logo(); update_funds();});
       
 categoryRowChart
-      .width(400)
+      .width(setWidth(width))
       .height(260)
       .dimension(category)
       .group(categoryGroup)
       .colors(['#c06054','#c9776d', '#d28e85', '#dba49d', '#e4bbb6', '#edd1ce', '#f6e8e6'])
-      .on("filtered", function (chart, filter) {update();});
+      .on("filtered", function (chart, filter) {update_logo(); update_funds();});
       
 inceptionBarChart
-      .width(422)
+      .width(setWidth(width))
       .height(360)
+      .gap (20)
+      .centerBar(true)
+      //.margins({right : 10, left : 20, top : 20, bottom : 20})
       .elasticY(true)
       .renderHorizontalGridLines(true)
-      .x(d3.time.scale().domain([new Date(2007, 0, 1), new Date(2015, 6, 6)]))
+      .x(d3.time.scale().domain([new Date(2006, 1, 31), new Date(2015, 6, 6)]))
 	  .xUnits(d3.time.years)
+	  .colors(["#9BAEBC"])
       .dimension(yearlyInception)
       .group(yearlyInceptionGroup)
-      .on("filtered", function (chart, filter) {update();});
-      
-totalLeve
-	  .formatNumber(d3.format(".1f"))
-	  .group(totalRaisedGroup)
-	  .valueAccessor(total);
+      .on("filtered", function (chart, filter) {update_logo();      update_funds();})
+      .yAxis()
+      .tickFormat(function(v) { return Math.round(v) ;})
+      .tickValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
 
-// var date_1_group = date_1.group().reduceSum(function(d){ return d.Round_1 ;}) ;
-// var date_2_group = date_2.group().reduceSum(function(d){ return d.Round_2 ;}) ;
-// var date_3_group = date_3.group().reduceSum(function(d){ return d.Round_3 ;}) ; 
-// var date_4_group = date_4.group().reduceSum(function(d){ return d.Round_4 ;}) ;
-
-// var Round1 = dc.lineChart(fundsChart)
-//       .dimension(date_1)
-//       .group(date_1_group, "Seed")
-//       .valueAccessor(function (d) {
-//             return d.value;
-//         });
-//         
-// var Round2 = dc.lineChart(fundsChart)
-//       .dimension(date_2)
-//       .group(date_2_group, "Seed")
-//       .valueAccessor(function (d) {
-//             return d.value;
-//         });
-// 
-// var Round3 = dc.lineChart(fundsChart)
-//       .dimension(date_3)
-//       .group(date_3_group, "Seed")
-//       .valueAccessor(function (d) {
-//             return d.value;
-//         });
-// 
-// var Round4 = dc.lineChart(fundsChart)
-//       .dimension(date_4)
-//       .group(date_4_group, "Seed")
-//       .valueAccessor(function (d) {
-//             return d.value;
-//         });
-    
-//  
-fundsChart
-	  .renderArea(true)
-      .renderHorizontalGridLines(true)
-      .width(420)
-      .height(380)
-	  .dimension(date_1)
-	  .group(date_1.group().reduceSum(function(d) { return +d.Round_1 }))
-      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 0, 1)]))
-      .on("filtered", function (chart, filter) {update();});      
-   
 window.onresize = function() {
 width = $(window).width(),
 height = $(window).height();
-update();
+
+dc.renderAll();
+update_logo();
 } ;      
-   
-function update() {
 
 	var liste_companies = Company.bottom(Infinity);
 	
-// 	var array_results = [];
-// 
-// 	for(i = 0; i < liste_companies.length; i++) {
-// 		var newJSON = {};
-// 		newJSON.key = "Seed";
-// 		newJSON.date = (d3.time.year(liste_companies[i].Date_1)).getFullYear();
-// 		newJSON.value = liste_companies[i].Round_1;
-// 	
-// 		//var json = JSON.stringify(newJSON);
-// 		
-// 		array_results.push(newJSON);
-// 	}
-// 	
-// 	for(i = 0; i < liste_companies.length; i++) {
-// 		var newJSON = {};
-// 		newJSON.key = "Series A";
-// 		newJSON.date = (d3.time.year(liste_companies[i].Date_2)).getFullYear();
-// 		newJSON.value = liste_companies[i].Round_2;
-// 	
-// 		//var json = JSON.stringify(newJSON);
-// 		
-// 		array_results.push(newJSON);
-// 	}
-// 	
-// 	for(i = 0; i < liste_companies.length; i++) {
-// 		var newJSON = {};
-// 		newJSON.key = "Series B";
-// 		newJSON.date = (d3.time.year(liste_companies[i].Date_3)).getFullYear();
-// 		newJSON.value = liste_companies[i].Round_3;
-// 	
-// 		//var json = JSON.stringify(newJSON);
-// 		
-// 		array_results.push(newJSON);
-// 	}
-// 
-// 	for(i = 0; i < liste_companies.length; i++) {
-// 		var newJSON = {};
-// 		newJSON.key = "Series C";
-// 		newJSON.date = (d3.time.year(liste_companies[i].Date_4)).getFullYear();
-// 		newJSON.value = liste_companies[i].Round_4;
-// 	
-// 		//var json = JSON.stringify(newJSON);
-// 		
-// 		array_results.push(newJSON);
-// 	}
-// 	
-// function isJson(str) {
-//     try {
-//         JSON.parse(str);
-//     } catch (e) {
-//         return false;
-//     }
-//     return true;
-// }
-// 
-// console.log(isJson([  {key : 1000, data : 0, ss: "lkj"} , {key : 1000, data : 0, ss: "lkj"} , {key : 1000, data : 0, ss: "lkj"} ]));
-// 	
-// 	d3.json(array_results, function(data) {
-// 	
-// 	width_chart = $("#color-2").width();
-// 	height_chart = $("#color-2").height();
-// 	
-// 	margin_chart = { top: 30, left : 10, right: 10, bottom : 10};
-// 	
-// 	var svg_fundChart = d3.select("#fundsBarChart").append("svg")
-// 				.attr("width", width_chart - margin_chart.right - margin_chart.left)
-// 				.attr("height", height_chart - margin_chart.top - margin_chart.bottom)
-// 	
-// 	colorrange = ["#ac1e44", "#D53F62", "#ff6060", "#fcaa4c"];
-// 	
-// 	var indice = ["Seed", "Series A", "Series B", "Series C"];
-// 	
-// 	strokecolor = colorrange[2];
-// 				
-// 	var x = d3.time.scale()
-// 		.range([margin_chart.left, width_chart - margin_chart.right]);
-// 
-// 	var y = d3.scale.linear()
-// 		.range([height_chart - margin_chart.top, margin_chart.bottom]);
-// 
-// 	var z = d3.scale.ordinal()
-// 		.range(colorrange);
-// 
-// 	var xAxis = d3.svg.axis()
-// 		.scale(x)
-// 		.orient("bottom")
-// 		.ticks(d3.time.years);
-// 
-// 	var yAxis = d3.svg.axis()
-// 		.scale(y);
-// 
-// 	var yAxisr = d3.svg.axis()
-// 		.scale(y);
-// 
-// 	var stack = d3.layout.stack()
-// 		.offset("zero")
-// 		.values(function(d) { return d.values; })
-// 		.x(function(d) { return d.date; })
-// 		.y(function(d) { return d.value; });
-// 
-// 	var nest = d3.nest()
-// 		.key(function(d) { return d.key; });
-// 
-// 	var area = d3.svg.area()
-// 		.interpolate("cardinal")
-// 		.x(function(d) { return x(d.date); })
-// 		.y0(function(d) { return y(d.y0); })
-// 		.y1(function(d) { return y(d.y0 + d.y); });
-// 
-//   var layers = stack(nest.entries(data));
-// 
-//   x.domain(d3.extent(data, function(d) { return d.date; }));
-//   y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
-// 
-//   var layer = svg_fundChart.selectAll(".layer")
-//       .data(layers)
-//       .enter().append("path")
-//       .attr("class", "layer")
-//       .attr("d", function(d) { return area(d.values); })
-//       .style("fill", function(d, i) { return z(i); });
-// 
-//   svg_fundChart.append("g")
-//       .attr("class", "x axis")
-//       .attr("transform", "translate(0," + height + ")")
-//       .call(xAxis);
-// 
-//   svg_fundChart.append("g")
-//       .attr("class", "y axis")
-//       .attr("transform", "translate(" + width + ", 0)")
-//       .call(yAxis.orient("left"));
-// 
-//   svg_fundChart.append("g")
-//       .attr("class", "y axis")
-//       .call(yAxis.orient("left"))
-//       .append("text")
-//       .text( "US$ million" )
-//       .attr("font-size" , "14px")
-//       .attr("x", -30)
-//       .attr("y", -10)
-//       .attr("fill", "#9C9C9C");
-// 
-//   svg_fundChart.selectAll(".layer")
-//     .attr("opacity", 1)
-//     .on("mouseover", function(d, i) {
-//       svg_fundChart.selectAll(".layer").transition()
-//       .duration(300)
-//       .attr("opacity", function(d, j) {
-//         return j != i ? 0.5 : 1;
-//     })});
-//     
-//     
-//     });
-// 
-// 
-// 
-// 
-// 
-// 
-// 
+	var array_results = [];
+	
+	for(elements = 0 ; elements < liste_companies.length ; elements++) {
+		newjson = {} ;
+		newjson.company = liste_companies[elements].Company;
+		newjson.round = "Seed" ;
+		newjson.date = liste_companies[elements].Date_1 ;
+		newjson.amount = liste_companies[elements].Round_1 ;
+		
+		array_results.push(newjson) ;
+		
+		newjson = {} ;
+		newjson.company = liste_companies[elements].Company;
+		newjson.round = "Series A" ;
+		newjson.date = liste_companies[elements].Date_2 ;
+		newjson.amount = liste_companies[elements].Round_2 ;
+		
+		array_results.push(newjson) ;
+		
+		newjson = {} ;
+		newjson.company = liste_companies[elements].Company;
+		newjson.round = "Series B" ;
+		newjson.date = liste_companies[elements].Date_3 ;
+		newjson.amount = liste_companies[elements].Round_3 ;
+		
+		array_results.push(newjson) ;
+		
+		newjson = {} ;
+		newjson.company = liste_companies[elements].Company;
+		newjson.round = "Series C" ;
+		newjson.date = liste_companies[elements].Date_4 ;
+		newjson.amount = liste_companies[elements].Round_4 ;
+		
+		array_results.push(newjson) ;
+	}
+	
+	ndx_2 = crossfilter(array_results);
+	
+	all_2 = ndx_2.groupAll();
 
+	var company = ndx_2.dimension(function(d) {
+		return d.company ;
+	});
+	
+	var date = ndx_2.dimension(function(d) {
+		return d3.time.year(d.date) ;
+	});
+	
+	var round = ndx_2.dimension(function(d) {
+		return d.round ;
+	});
+	
+	var amount = ndx_2.dimension(function(d) {
+		return d.amount ;
+	});
+	
+var totalRaisedGroup = ndx_2.groupAll().reduce( 
+          function (p, v) {
+              ++p.n;
+              p.tot += v.amount;
+              return p;
+          },
+          function (p, v) {
+              --p.n;
+              p.tot -= v.amount;
+              return p;
+          },
+          function () { return {n:0,tot:0}; }
+);
+
+totalLeve
+	  .formatNumber(d3.format(".1f"))
+	  .group(totalRaisedGroup)
+	  .valueAccessor(total);	
+
+trigger = 0;
+
+fundsChart
+      .renderHorizontalGridLines(true)
+      .brushOn(true)
+      .width(setWidth(width))
+      .height(380)
+      .legend(dc.legend().x(100).y(26).itemHeight(16).gap(21))
+	  .dimension(date)
+	  .gap(10)
+	  .centerBar(true)
+	  .group(date.group().reduceSum(function(d) { return d.round === 'Seed' ? d.amount : 0; }), "Seed")
+	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series A' ? d.amount : 0; }), "Series A")
+	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series B' ? d.amount : 0; }), "Series B")
+	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series C' ? d.amount : 0; }), "Series C")
+	  .colors( ['#550805', '#A51D0C', '#c06054', '#d28e85'] )
+	  .xUnits(d3.time.years)
+      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 11, 31)]))
+      .on("filtered", function(chart, filter) {
+    
+	update_funds();
+    
+    var liste_com = company.bottom(Infinity); 	
+    
+    console.log(filter);
+    
+    if (filter != null) {
+
+	var array_com = [];
+
+	for(i = 0; i < liste_com.length; i++) {
+		array_com.push(liste_com[i].company);
+	}
+
+	Company.filter(function(d) {
+
+	if(array_com.indexOf(d) != -1) {
+		return d;
+	} });
+	
+	} else {
+	
+	Company.filter(null);
+	
+	}
+	
+	update_logo();
+      	
+      });
+   
+function update_funds() {
+
+ 	var liste_companies = Company.bottom(Infinity); 	
+
+	company.filter(null);
+	
+	var array_companies = [];
+
+	for(i = 0; i < liste_companies.length; i++) {
+		array_companies.push(liste_companies[i].Company);
+	}
+	
+	company.filter(function(d) {
+
+	if(array_companies.indexOf(d) != -1) {
+		return d;
+	} });
+	
+}
+
+function update_logo() {
 
 	var nb_companies = (Company.bottom(Infinity)).length;
 	
@@ -580,7 +451,7 @@ function update() {
 	var nb_width = Math.floor(width / width_logo);
 	var nb_height = Math.ceil(nb_companies / nb_width);
 	
-	$("div#table_logos").css("transition","height 2s");
+	$("div#table_logos").css("transition","height 1.3s");
 	$("div#table_logos").css("height",nb_height * height_logo + 20 + "px");
 
     var svg_logo = d3.select("#table_logos").append("svg")
@@ -588,10 +459,9 @@ function update() {
     			.attr("width", width)
     			.attr("height", nb_height * height_logo + 20);
 	
-
 	var logo_table = svg_logo.append("g")
     			.attr("class", "logo_table")
-    			.attr("transform", "translate(" + (width - nb_width * width_logo) / 2 +  ",10)");
+    			.attr("transform", "translate(" + (width - nb_width * width_logo + 20) / 2 +  ",10)");
 
 	logo_table.selectAll("image")
       .data(Company.bottom(Infinity))
@@ -642,7 +512,7 @@ function update() {
 		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " on " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) };
 		  if(element[0][0].__data__.Round_4 != "0") {$(".modal-round4").text("Series C : €" + element[0][0].__data__.Round_4 + "m led by " + investors_4 + " on " + monthNames[element[0][0].__data__.Date_4.getMonth()] + " " + element[0][0].__data__.Date_4.getFullYear()) };
           
-          $(".modal-website").html("<a href='element[0][0].__data__.Website'>Website</a>");
+          $(".modal-website").html("<a href='" + element[0][0].__data__.Website + "'>Website</a>");
           
           $('#myModal').modal('toggle'); 
 
@@ -658,8 +528,7 @@ function update() {
     .attr("height", 45);
 }
 
-update();
-
+update_logo();
 
 dc.renderAll();
 }

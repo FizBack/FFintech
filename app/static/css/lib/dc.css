@@ -3,8 +3,7 @@ div.dc-chart {
 }
 
 .dc-chart rect.bar {
-	/* fill : #d28e85; */
-	fill : #9baebc;
+	/* fill : #9baebc; */
     stroke: none;
     cursor: pointer;
 }
@@ -63,11 +62,13 @@ div.dc-chart {
     font-weight : lighter;
 }
 
-.dc-chart .x.axis text {/* 
+.dc-chart .x.axis text {
+/* 
 
     text-anchor: end !important;
- */
+
     transform: rotate(-20deg) translate(0px, 5px);
+ */
 
 }
 
@@ -218,9 +219,13 @@ div.dc-chart {
 }
 
 .dc-legend {
-    font-size: 11px;
-    font-color:white;
-    font-family: "Proxima Nova", "Helvetica", Sans Serif;
+    font-size: 13px;
+    font-weight : lighter;
+    fill: white;
+    font-family: "Proxima Nova", Helvetica, Sans Serif;
+	padding : 3px;
+	background-color : white ;
+	opacity : 0.9;
 }
 
 .dc-legend-item {

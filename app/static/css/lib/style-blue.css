@@ -100,7 +100,7 @@ MENU SECTION STYLES
 ============================================================ */
 .navbar-inverse {
 background-color: rgba(0, 0, 0, 0.1);
-border-color: #37DEB1;
+border-color: white;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {

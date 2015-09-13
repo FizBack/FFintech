@@ -1,6 +1,11 @@
 /* GENERAL */
 
-@import url(https://fonts.googleapis.com/css?family=Sanchez);
+@import url(https://fonts.googleapis.com/css?family=Playball);
+
+span#madeinfrance {
+	font-family : "Proxima Nova", Helvetica ;
+	font-style : italic;
+}
 
 .image {
   visibility: visible;
@@ -51,6 +56,8 @@
 #titre1 {
 	position: relative;
 	background : #G1G1G1;
+	font-family : "Proxima Nova", Helvetica ;
+/* 	letter-spacing : 0px; */
 	min-height:65px;
 	color:black;
 	width:100%;
@@ -67,6 +74,7 @@
 	position: relative;
 	background-color : white;
 	min-height:65px;
+	font-family : "Proxima Nova", Helvetica ;
 	color:black;
 	width:100%;
 	padding-left : 20px;
@@ -84,7 +92,7 @@
 #logo-table {
 	border-style:solid;
 	border-width : 1px;
-	border-color: #37DEB1;
+	border-color: #0D4F8B;
 	border-right:0px;
 	border-left: 0px;
 }
@@ -100,6 +108,13 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition : all 1s;
+}
+
+.image:hover {
+	border-color : #0D4F8B ;
+	border-width : 1px;
+	border-style : solid;
 }
 
 /* FIN TABLE DES LOGOS */
@@ -183,6 +198,15 @@ a.modal-linkedin {
 	width:85%;
 }
 
+.tuile {
+	opacity : 1;
+	transition : all 0.8s;
+}
+
+.tuile:hover {
+	opacity : 0.9;
+}
+
 #color-1 {
  background:#073559;
  min-height:125px;
@@ -242,6 +266,7 @@ min-height:100px;
 .FrenchFinTech {
 	position:relative;
 	left:60px;
+	font-size: 1.3em;
 }
 
 #categoryRowChart {
@@ -265,7 +290,7 @@ min-height:100px;
 
 #businessModelPieChart {
   position : absolute;
-  left : 105px;
+  left : 30%;
   top : 55px;
 }
 
@@ -366,17 +391,17 @@ h4.FizBack {
 
 .twitter {
 	position : relative;
-	width : 35px;
-	margin-left: 75px;
-	margin-top :10px;
+	width : 55px;
+	margin-left: 60px;
+	margin-top : -3px;
 }
 
 .jellyfish {
 	position : relative;
-	width : 45px;
-	height : 45px;
+	width : 37px;
+	height : 37px;
 	margin-left : 90px;
-	margin-top :3px;
+	margin-top :6px;
 }
 
 .github {
