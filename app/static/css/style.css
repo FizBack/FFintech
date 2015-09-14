@@ -148,6 +148,7 @@ img.modal-logo {
 h4.modal-abstract {
 	margin-bottom : 0px;
 	font : 24px "Proxima Nova";
+	font-weight : lighter;
 	text-align : center;
 }
 
@@ -233,6 +234,8 @@ min-height:100px;
 #color-5 {
  background:#550805;
   min-height:150px;
+  opacity : 0.85;
+  transition : all 0.4s;
 }
 
 #color-6 {
