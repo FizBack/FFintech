@@ -385,13 +385,14 @@ fundsChart
 	  .dimension(date)
 	  .gap(20)
 	  .centerBar(true)
+	  .elasticY(true)
 	  .group(date.group().reduceSum(function(d) { return d.round === 'Seed' ? d.amount : 0; }), "Seed")
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series A' ? d.amount : 0; }), "Series A")
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series B' ? d.amount : 0; }), "Series B")
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series C' ? d.amount : 0; }), "Series C")
 	  .colors( ['#550805', '#A51D0C', '#c06054', '#d28e85'] )
 	  .xUnits(d3.time.years)
-      .x(d3.time.scale().domain([new Date(2008, 0, 1), new Date(2015, 11, 31)]))
+      .x(d3.time.scale().domain([new Date(2008, 5, 1), new Date(2015, 11, 31)]))
       .on("filtered", function(chart, filter) {
     
 	update_funds();
