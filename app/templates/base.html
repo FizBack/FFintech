@@ -29,7 +29,7 @@
 	
  	<link href="/static/css/style.css" rel="stylesheet"/>
  	
-    <title>FinTech, Made In France</title>
+    <title>The French Fintech index</title>
     
     <link rel="icon" 
       type="image/png" 
@@ -73,14 +73,17 @@
 						<div class="row tuile" id="color-1">
 							<div class="chart-title"><h4>T O T A L &nbsp;&nbsp; R A I S E D</h4></div>
 							<div class="chart" id="montant-leve"><h1 id="total-leve">€<span class="number-display">_</span> MILLION </h1></div>
-														<script>
-							var text_width = ($(window).width() > 1270) ? "52px" : "44px" ;
+							<script>
+							if ($(window).width() > 1270) { var text_width = "52px" }
+							else if ($(window).width() > 1140) { var text_width = "47px" }
+							else if ($(window).width() > 992) { var text_width = "40px" }
+							else if ($(window).width() < 993) { var text_width = "52px" }
 							
 							$("h1#total-leve").css("font-size", text_width) ;
 							</script>
 						</div>
 						<div class="row tuile" id="color-2">
-							<div class="chart-title"><h4>Y E A R L Y &nbsp; F U N D I N G S &nbsp;( € M )</h4></div>
+							<div class="chart-title"><h4>F U N D I N G S &nbsp;( € M )</h4></div>
 							<div id="fundsBarChart" class="chart">
 							  
 							</div>

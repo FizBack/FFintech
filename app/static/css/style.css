@@ -57,7 +57,6 @@ span#madeinfrance {
 	position: relative;
 	background : #G1G1G1;
 	font-family : "Proxima Nova", Helvetica ;
-/* 	letter-spacing : 0px; */
 	min-height:65px;
 	color:black;
 	width:100%;
@@ -205,6 +204,7 @@ a.modal-linkedin {
 }
 
 .tuile:hover {
+
 	opacity : 0.9;
 }
 

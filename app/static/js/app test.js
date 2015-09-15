@@ -2,9 +2,13 @@ var width = $(window).width(),
     height = $(window).height();
     
 function setWidth(width){
-	if(width > 992) { return $(window).width() / 3 - 20 }
+	if (width > 992) { return $(window).width() / 3 - 20 }
 	else { return $(window).width() - 20}
 }
+
+function setWidth_mobile(width) {
+		return (setWidth(width) === ($(window).width() - 20)) ? setWidth(width) - 140 : setWidth(width)
+	}
     
 var width_logo = 140, //marge de 20 pour la largeur
 	height_logo = 60; // 15 pour la hauteur
@@ -58,8 +62,6 @@ var total = function(d) {
       };
 
 var bubbleGroup = Company.group().reduce(
-		//  The first parameter is a transient instance of the reduced object. The second object is the current record
-        /* callback for when data is added to the current filter results */
         function (p, v) {
             ++p.count;
             
@@ -125,7 +127,6 @@ var bubbleGroup = Company.group().reduce(
 					
             return p;
         },
-        /* callback for when data is removed from the current filter results */
         function (p, v) {
             --p.count;
             p.Round_1 = 0;
@@ -142,7 +143,6 @@ var bubbleGroup = Company.group().reduce(
             p.category = "";
             return p;
         },
-        /* initialize p */
         function () {
             return {
                 count: 0,
@@ -264,7 +264,7 @@ businessModelPieChart
       .on("filtered", function (chart, filter) {update_logo(); update_funds();});
       
 categoryRowChart
-      .width(setWidth(width))
+      .width(setWidth_mobile(width))
       .height(260)
       .dimension(category)
       .group(categoryGroup)
@@ -272,11 +272,10 @@ categoryRowChart
       .on("filtered", function (chart, filter) {update_logo(); update_funds();});
       
 inceptionBarChart
-      .width(setWidth(width))
+      .width(setWidth_mobile(width))
       .height(360)
       .gap (20)
       .centerBar(true)
-      //.margins({right : 10, left : 20, top : 20, bottom : 20})
       .elasticY(true)
       .renderHorizontalGridLines(true)
       .x(d3.time.scale().domain([new Date(2006, 1, 31), new Date(2015, 6, 6)]))
@@ -379,7 +378,7 @@ trigger = 0;
 fundsChart
       .renderHorizontalGridLines(true)
       .brushOn(true)
-      .width(setWidth(width))
+      .width(setWidth_mobile(width))
       .height(380)
       .legend(dc.legend().x(100).y(26).itemHeight(16).gap(21))
 	  .dimension(date)
@@ -398,8 +397,6 @@ fundsChart
 	update_funds();
     
     var liste_com = company.bottom(Infinity); 	
-    
-    console.log(filter);
     
     if (filter != null) {
 
@@ -424,6 +421,13 @@ fundsChart
 	update_logo();
       	
       });
+      
+fundsChart.xAxis()
+     .tickFormat(d3.time.format('%y'));
+     
+inceptionBarChart.xAxis()
+     .tickFormat(d3.time.format('%y'));
+
    
 function update_funds() {
 
@@ -511,7 +515,6 @@ function update_logo() {
           $(".modal-BM").text("Business type : " + element[0][0].__data__.Business_model);
           $(".modal-abstract").text(element[0][0].__data__.Abstract);
           $(".modal-headquarters").text("Headquarters : " + element[0][0].__data__.Headquarters);
-//           if(element[0][0].__data__.Competition) { $(".modal-competition").text("Competition : " + element[0][0].__data__.Competition) } else { $(".modal-competition").text()} ;
           if(element[0][0].__data__.Round_1 != "0") {$(".modal-round1").text("Seed round : €" + element[0][0].__data__.Round_1 + "m led by " + investors_1 + " on " + monthNames[element[0][0].__data__.Date_1.getMonth()] + " " + element[0][0].__data__.Date_1.getFullYear()) } else {$(".modal-round1").text("")};
           if(element[0][0].__data__.Round_2 != "0") {$(".modal-round2").text("Series A : €" + element[0][0].__data__.Round_2 + "m led by " + investors_2 + " on " + monthNames[element[0][0].__data__.Date_2.getMonth()] + " " + element[0][0].__data__.Date_2.getFullYear()) } else {$(".modal-round2").text("")};
 		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " on " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) } else {$(".modal-round3").text("")} ;
@@ -520,8 +523,6 @@ function update_logo() {
           $(".modal-website").html("<a href='" + element[0][0].__data__.Website + "'>Website</a>");
           
           $('#myModal').modal('toggle'); 
-
-
 
        })
     .transition()
