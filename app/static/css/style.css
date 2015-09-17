@@ -48,6 +48,12 @@ span#madeinfrance {
 	transform: rotate(720deg);
 }
 
+.FrenchFinTech {
+	position:relative;
+	left:60px;
+	font-size: 1.3em;
+}
+
 /* FIN BARRE DE NAVIGATION */
 
 
@@ -266,12 +272,6 @@ min-height:100px;
     fill: white;
 }
 
-.FrenchFinTech {
-	position:relative;
-	left:60px;
-	font-size: 1.3em;
-}
-
 #categoryRowChart {
   position : absolute;
   bottom : 0px; 
@@ -293,7 +293,7 @@ min-height:100px;
 
 #businessModelPieChart {
   position : absolute;
-  left : 30%;
+/*   left : 25%; */
   top : 55px;
 }
 
@@ -326,7 +326,7 @@ h1#total-leve {
 
 #FF{
 	position : absolute;
-	left : 18px;
+	/* left : 18px; */
 	top : 30px;
 }
 

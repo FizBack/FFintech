@@ -283,16 +283,35 @@ inceptionBarChart
 	  .colors(["#9BAEBC"])
       .dimension(yearlyInception)
       .group(yearlyInceptionGroup)
-      .on("filtered", function (chart, filter) {update_logo();      update_funds();})
+      .on("filtered", function (chart, filter) {update_logo(); update_funds();})
       .yAxis()
       .tickFormat(function(v) { return Math.round(v) ;})
-      .tickValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+      .tickValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]);
 
 window.onresize = function() {
 width = $(window).width(),
 height = $(window).height();
 
+if ($(window).width() > 1270) { var text_width = "52px" ; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
+else if ($(window).width() > 1140) { var text_width = "47px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
+else if ($(window).width() > 976) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
+else if ($(window).width() < 977) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; }
+							
+$("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
+$('#FF').css("left", Math.round(ff_margin) + "%");
+$("h1#total-leve").css("font-size", text_width);
+
+inceptionBarChart
+      .width(setWidth_mobile(width))
+      
+categoryRowChart
+      .width(setWidth_mobile(width))
+      
+fundsChart
+      .width(setWidth_mobile(width))
+
 dc.renderAll();
+
 update_logo();
 } ;      
 
@@ -423,10 +442,10 @@ fundsChart
       });
       
 fundsChart.xAxis()
-     .tickFormat(d3.time.format('%y'));
+     .tickFormat(d3.time.format("'%y"));
      
 inceptionBarChart.xAxis()
-     .tickFormat(d3.time.format('%y'));
+     .tickFormat(d3.time.format("'%y"));
 
    
 function update_funds() {
@@ -446,6 +465,8 @@ function update_funds() {
 	if(array_companies.indexOf(d) != -1) {
 		return d;
 	} });
+	
+	console.log(round.bottom(Infinity))
 	
 }
 
