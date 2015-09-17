@@ -268,6 +268,7 @@ categoryRowChart
       .height(260)
       .dimension(category)
       .group(categoryGroup)
+//      .colors(['#dbc0bb','#c9a19a', '#b78279', '#a56458', '#845046', '#633c35', '#412823'])
       .colors(['#c06054','#c9776d', '#d28e85', '#dba49d', '#e4bbb6', '#edd1ce', '#f6e8e6'])
       .on("filtered", function (chart, filter) {update_logo(); update_funds();});
       

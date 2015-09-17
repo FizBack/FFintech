@@ -287,13 +287,12 @@ min-height:100px;
     fill: none;
     stroke: #A51D0C;
     opacity: 0.5;
-    stroke-width:2;
+    stroke-width:1.5;
     shape-rendering: crispEdges;
 }
 
 #businessModelPieChart {
   position : absolute;
-/*   left : 25%; */
   top : 55px;
 }
 
