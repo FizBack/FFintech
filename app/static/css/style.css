@@ -152,7 +152,7 @@ img.modal-logo {
 
 h4.modal-abstract {
 	margin-bottom : 0px;
-	font : 24px "Proxima Nova";
+	font : 24px "Proxima Nova", Helvetica;
 	font-weight : lighter;
 	text-align : center;
 }
@@ -198,7 +198,7 @@ a.modal-linkedin {
 	position : relative;
 	opacity:1;
 	font-weight:lighter;
-	font-family: 22px, "Proxima Nova";
+	font-family: 22px, "Proxima Nova", Helvetica;
 	left:16px;
 	top:3px;
 	height:60px;
