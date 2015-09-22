@@ -7,7 +7,7 @@ function setWidth(width){
 }
 
 function setWidth_mobile(width) {
-		return (setWidth(width) === ($(window).width() - 20)) ? setWidth(width) - 140 : setWidth(width)
+		return (setWidth(width) === ($(window).width() - 20)) ? setWidth(width) * 0.9 : setWidth(width)
 	}
     
 var width_logo = 140, //marge de 20 pour la largeur
