@@ -127,7 +127,7 @@ span#madeinfrance {
 /* MODAL */
 
 .close .svg-cross {
-	margin-top : 12px;
+	margin-top : 10px;
 	margin-right : 14px;
 }
 
@@ -163,8 +163,9 @@ h4.modal-abstract {
 
 .container-logo {
 	position :absolute;
-	left : 20px;
-	top : 20px;
+	right : 70px;
+/* 	left : 320px; */
+	top : 230px;
 	width : 150px;
 	height: 70px;
 }
@@ -216,13 +217,15 @@ a.modal-linkedin {
 
 #color-1 {
  background:#073559;
- min-height:125px;
+  min-height:150px;
+  opacity : 0.85;
+  transition : all 0.4s;
+
 }
 
 #color-2 {
  background:#0D4F8B;
-min-height:100px;
-/*  height : 456px; */
+  min-height:431px;
 }
 
 #color-3 {
@@ -239,14 +242,13 @@ min-height:100px;
 
 #color-5 {
  background:#550805;
-  min-height:150px;
-  opacity : 0.85;
-  transition : all 0.4s;
+  min-height:125px;
 }
 
 #color-6 {
  background:#A51D0C;
-  min-height:431px;
+ min-height:100px;
+/*  height : 456px; */
 }
 
 .chart {
@@ -343,6 +345,12 @@ h1#total-leve {
 svg#inceptionBarChart {
 	overflow:hidden;
 }
+
+.info-logo {
+	width : 28px;
+	opacity : 0.45;
+}
+
 
 /* FIN DASHBOARD */
  

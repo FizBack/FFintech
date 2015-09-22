@@ -217,7 +217,7 @@ var FF = svg_FF.append("image")
       FF.style("opacity", "1")
       FF_trigger.style("opacity", "1")
       FF_caption.style("opacity", "1")
-      $("#color-5").css("opacity","1");
+      $("#color-1").css("opacity","1");
       }
     })
     .on("mouseout", function(){
@@ -225,13 +225,13 @@ var FF = svg_FF.append("image")
       FF.style("opacity", "0.6")
       FF_trigger.style("opacity", "0.6")
       FF_caption.style("opacity", "0.6")
-      $("#color-5").css("opacity","0.85");
+      $("#color-1").css("opacity","0.85");
       }
     })
     .on("click", function() { 
       if(toggle_FF === 0) {
       FF.transition().duration(400).style("opacity", "1");
-      $("#color-5").css("opacity","1");
+      $("#color-1").css("opacity","1");
       FF_trigger.transition().duration(400).text("O N").style("opacity", "1");;
       FF_caption.transition().duration(400).style("opacity", "1");
       FranceFintechDimension.filterExact("X");
@@ -241,7 +241,7 @@ var FF = svg_FF.append("image")
       toggle_FF = 1;
       }
       else if (toggle_FF === 1) {
-      $("#color-5").css("opacity","0.85");
+      $("#color-1").css("opacity","0.85");
       FF.transition().duration(400).style("opacity", "0.6");
       FF_caption.transition().duration(400).style("opacity", "0.6");
       FF_trigger.transition().duration(400).text("O F F").style("opacity", "0.6");
@@ -354,6 +354,7 @@ update_logo();
 		array_results.push(newjson) ;
 	}
 	
+	
 	ndx_2 = crossfilter(array_results);
 	
 	all_2 = ndx_2.groupAll();
@@ -409,7 +410,9 @@ fundsChart
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series A' ? d.amount : 0; }), "Series A")
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series B' ? d.amount : 0; }), "Series B")
 	  .stack(date.group().reduceSum(function(d) { return d.round === 'Series C' ? d.amount : 0; }), "Series C")
-	  .colors( ['#550805', '#A51D0C', '#c06054', '#d28e85'] )
+      .colors(['#740300','#DD4945', '#FF9B98', '#FFF1F1'])
+      //.colors(['#04253e','#073559', '#51718a', '#9baebc']) bleu thèmre 2 comme BM
+	  //.colors( ['#550805', '#A51D0C', '#c06054', '#d28e85'] ) rouge theme original
 	  .xUnits(d3.time.years)
       .x(d3.time.scale().domain([new Date(2008, 5, 1), new Date(2015, 11, 31)]))
       .on("filtered", function(chart, filter) {
@@ -461,13 +464,21 @@ function update_funds() {
 		array_companies.push(liste_companies[i].Company);
 	}
 	
+	$("#fundsBarChart rect.bar").css("opacity", "1");
+	
+	if(liste_companies.length == 0){
+			
+		$("#fundsBarChart rect.bar").css("opacity", "0");	
+			
+	} else {
+
 	company.filter(function(d) {
 
 	if(array_companies.indexOf(d) != -1) {
 		return d;
 	} });
 	
-	console.log(round.bottom(Infinity))
+    }
 	
 }
 
