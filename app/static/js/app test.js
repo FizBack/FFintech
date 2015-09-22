@@ -293,15 +293,15 @@ window.onresize = function() {
 width = $(window).width(),
 height = $(window).height();
 
-if ($(window).width() > 1270) { var text_width = "52px" ; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
-else if ($(window).width() > 1140) { var text_width = "47px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
-else if ($(window).width() > 976) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; }
-else if ($(window).width() < 977) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; }
+if ($(window).width() > 1270) { var text_width = "52px" ; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = width / 3 - 30 }
+else if ($(window).width() > 1140) { var text_width = "47px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = width / 3 - 30}
+else if ($(window).width() > 976) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = width / 3 - 30}
+else if ($(window).width() < 977) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = width - 30}
 							
 $("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 $('#FF').css("left", Math.round(ff_margin) + "%");
 $("h1#total-leve").css("font-size", text_width);
-$("h1#total-leve").css("width", width / 3 - 30);
+$("h1#total-leve").css("width", div_width);
 
 
 inceptionBarChart
