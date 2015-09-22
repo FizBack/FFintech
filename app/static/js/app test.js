@@ -301,6 +301,8 @@ else if ($(window).width() < 977) { var text_width = "52px"; var bt_margin = 100
 $("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 $('#FF').css("left", Math.round(ff_margin) + "%");
 $("h1#total-leve").css("font-size", text_width);
+$("h1#total-leve").css("width", width / 3 - 30);
+
 
 inceptionBarChart
       .width(setWidth_mobile(width))
