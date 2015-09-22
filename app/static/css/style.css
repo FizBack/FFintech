@@ -314,7 +314,8 @@ a.modal-linkedin {
 h1#total-leve {
 /* 	font-size : 52px; */
 	position : absolute;
-	width : 370px;
+	width : 2000px;
+	overflow:hidden;
 	margin-left :35px;
 }
 
