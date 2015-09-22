@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Playball);
 
 span#madeinfrance {
-	font-family : "Proxima Nova", Helvetica ;
+	font-family : "Proxima Nova", Helvetica, Arial ;
 	font-style : italic;
 }
 
@@ -62,7 +62,7 @@ span#madeinfrance {
 #titre1 {
 	position: relative;
 	background : #G1G1G1;
-	font-family : "Proxima Nova", Helvetica ;
+	font-family : "Proxima Nova", Helvetica, Arial  ;
 	min-height:65px;
 	color:black;
 	width:100%;
@@ -79,7 +79,7 @@ span#madeinfrance {
 	position: relative;
 	background-color : white;
 	min-height:65px;
-	font-family : "Proxima Nova", Helvetica ;
+	font-family : "Proxima Nova", Helvetica, Arial  ;
 	color:black;
 	width:100%;
 	padding-left : 20px;
@@ -133,13 +133,13 @@ span#madeinfrance {
 
 h4.modal-txt {
 	color : #073559;
-	font: 20px "Proxima Nova", Helvetica;
+	font: 20px "Proxima Nova", Helvetica, Arial ;
 	margin-left : 15px;
 }
 
 .modal-company {
 	color : #073559;
-	font: 32px "Proxima Nova", Helvetica;
+	font: 32px "Proxima Nova", Helvetica, Arial ;
 	text-align : center;
 	margin-bottom : 45px;
 }
@@ -152,7 +152,7 @@ img.modal-logo {
 
 h4.modal-abstract {
 	margin-bottom : 0px;
-	font : 24px "Proxima Nova", Helvetica;
+	font : 24px "Proxima Nova", Helvetica, Arial ;
 	font-weight : lighter;
 	text-align : center;
 }
@@ -198,7 +198,7 @@ a.modal-linkedin {
 	position : relative;
 	opacity:1;
 	font-weight:lighter;
-	font-family: 22px, "Proxima Nova", Helvetica;
+	font-family: 22px, "Proxima Nova", Helvetica, Arial ;
 	left:16px;
 	top:3px;
 	height:60px;
@@ -256,7 +256,7 @@ a.modal-linkedin {
 }
 
 .dc-chart .pie-slice {
-    font-family: "Proxima Nova", Helvetica;
+    font-family: "Proxima Nova", Helvetica, Arial ;
     fill: white;
     font-size: 18px;
     cursor: pointer;
@@ -282,7 +282,7 @@ a.modal-linkedin {
 
 #categoryRowChart .axis text {
 	fill: #A51D0C;
-    font: 18px "Proxima Nova", "Helvetica", sans-serif;
+    font: 18px "Proxima Nova", "Helvetica", Arial, sans-serif;
 }
 
 #categoryRowChart .grid-line {
@@ -391,7 +391,7 @@ section#about {
 .FizBack {
 	position : absolute;
 	margin-left : 20px;
-	font : 20px, "Proxima Nova";
+	font : 20px, "Proxima Nova", Helvetica, Arial;
 	color : #073559;
 }
 
