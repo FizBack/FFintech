@@ -516,7 +516,7 @@ function update_logo() {
       .append("image")
       .attr("class", "logos")
       .attr("xlink:href", function(d,i){
-        return d.Logo;
+        return "/static/image/" + d.Logo;
       })
       .attr("class", "image")
       .attr("x", function(d,i){
@@ -535,7 +535,7 @@ function update_logo() {
           var element = d3.select(this);
           
           $(".modal-company").text("- " + element[0][0].__data__.Company + " -");
-          $(".modal-logo").attr("src", element[0][0].__data__.Logo);
+          $(".modal-logo").attr("src", "/static/image/" + element[0][0].__data__.Logo);
           $(".modal-websitelink").attr("href", element[0][0].__data__.Website);
           
           var FFmembership = element[0][0].__data__.FF_membership ? "Yes" : "No" ;
