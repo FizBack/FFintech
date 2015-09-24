@@ -5751,10 +5751,11 @@ button.close {
 }
 .modal-backdrop {
   position: absolute;
+  z-index : 20000000;
   top: 0;
   right: 0;
   left: 0;
-  background-color: #000;
+  background-color: black;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
@@ -5825,7 +5826,7 @@ button.close {
   position: absolute;
   top : 5px;
   right : 10px;
-  z-index: 1070;
+  z-index: 20;
   display: block;
   font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
   font-size: 12px;

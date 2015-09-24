@@ -13,13 +13,7 @@
   	<script src="/static/js/lib/crossfilter.js" type="text/javascript"></script>
   	<script src="/static/js/lib/dc.js" type="text/javascript"></script>
  	<script src="/static/js/lib/bootstrap.js" type="text/javascript"></script>
- 	
-<!--  	Ne pas oublier les 2 suivants si inutiles    -->
-<!-- 
  	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
- 	<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
- -->
-<!--  	////////////////////////////////////////////// -->
  	
  	<link href="/static/css/lib/dc.css" rel="stylesheet"/>
 	<link href="/static/css/lib/bootstrap.css" rel="stylesheet" />
@@ -37,9 +31,42 @@
       type="image/png" 
       href="http://i.imgur.com/gxslvVD.png">
       
+    <script>
+    	$(window).ready(function() {
+    	
+   	   var hash = this.hash;
+    	
+		$(".containloader").fadeOut("slow");
+		
+		   $('html, body').animate({
+       		scrollTop: $(hash).offset().top
+     		}, 300, function(){
+       		window.location.hash = hash;
+     	});
+	});
+		
+    </script>
+      
+
   </head>
   
   <body data-spy="scroll" data-target="#menu-section">
+  
+  
+  
+   <div class="containloader"> 
+<div class="zgroup"> 
+  <div class="bigSqr">
+    <div class="square first"></div>
+    <div class="square second"></div>
+    <div class="square third"></div>
+    <div class="square fourth"></div>
+  </div>
+</div>
+</div>
+  
+  
+
    	  <nav class="navbar navbar-inverse navbar-fixed-top" id="menu-section" >
   		  <div class="container-fluid">	
 			  <div class="navbar-header">
@@ -134,7 +161,7 @@
 					<div class="row" id="logo-table">
 						<div class="span12" id="table_logos"></div>
 						
-						    <div class="modal fade" id="myModal" role="dialog">
+						    <div class="modal fade" data-backdrop="true" id="myModal" role="dialog">
     							<div class="modal-dialog">
     
 							  		<div class="modal-content">
@@ -201,7 +228,7 @@
 							    </div>
 							    <div class="col-md-2" style="height:50px;">
 							    	<h4 class="FizBack"> SHARE </h4>
-	  								<a class="FizBack"><img class="twitter" src="http://findicons.com/files/icons/2779/simple_icons/128/twitter_128_black.png"> </a>
+	  								<a class="FizBack"><img class="twitter" src="/static/image/twitter.png"> </a>
 							    </div>
 						</div>
 					</footer>
