@@ -318,10 +318,8 @@ a.modal-linkedin {
 }
 
 h1#total-leve {
-/* 	font-size : 52px; */
 	position : absolute;
-/* 	width : 370px; */
-	margin-left :35px;
+	padding-left :35px;
 }
 
 #montant-leve {
