@@ -44,7 +44,7 @@ span#madeinfrance {
 #logo {
 	float:left;
 	height:30px;
-	width:30px;
+/* 	width:30px; */
 	position:absolute;
 	left : 20px;
 	top : 8px;
