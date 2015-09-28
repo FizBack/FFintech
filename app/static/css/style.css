@@ -133,7 +133,8 @@ span#madeinfrance {
 /* MODAL */
 
 .close .svg-cross {
-	margin-top : 10px;
+	width : 28px;
+	margin-top : 8px;
 	margin-right : 14px;
 }
 
@@ -141,6 +142,11 @@ h4.modal-txt {
 	color : #073559;
 	font: 20px "Proxima Nova", Helvetica, Arial ;
 	margin-left : 15px;
+}
+
+h4.modal-titre {
+	margin-left:32px;
+
 }
 
 .modal-company {
@@ -619,3 +625,7 @@ h4.FizBack {
   }
 }
  */
+ 
+.modal-backdrop.in {
+opacity: 0.5 !important ;
+}

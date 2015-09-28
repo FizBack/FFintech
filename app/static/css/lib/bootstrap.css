@@ -5751,7 +5751,7 @@ button.close {
 }
 .modal-backdrop {
   position: absolute;
-  z-index : 20000000;
+  z-index : 200;
   top: 0;
   right: 0;
   left: 0;
