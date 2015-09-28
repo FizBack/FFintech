@@ -5744,7 +5744,7 @@ button.close {
           background-clip: padding-box;
   border: 0px solid #999;
   border: 0px solid rgba(0, 0, 0, .2);
-  border-radius: 0px;
+  border-radius: 40px;
   outline: 0;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
           box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
