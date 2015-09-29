@@ -205,7 +205,8 @@
 							if ($(window).width() > 1270) { var text_width = "52px" ; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ;  var div_width = $(window).width() / 3 - 35 }
 							else if ($(window).width() > 1140) { var text_width = "47px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = $(window).width() / 3 - 35 }
 							else if ($(window).width() > 976) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = $(window).width() / 3 - 35}
-							else if ($(window).width() < 977) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 35}
+							else if ($(window).width() > 600) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 30}
+							else if ($(window).width() < 601) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 30}
 							
 							$("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 							$('#FF').css("left", Math.round(ff_margin) + "%");
