@@ -420,8 +420,9 @@ h4.FizBack {
 
 .twitter {
 	position : relative;
+	cursor:pointer;
 	width : 40px;
-	margin-left: 68px;
+	margin-left: 88px;
 	margin-top : 5px;
 }
 
