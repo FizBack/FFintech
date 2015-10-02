@@ -399,7 +399,7 @@ totalLeve
 	  .group(totalRaisedGroup)
 	  .valueAccessor(total);	
 
-trigger = 0;
+// trigger = 0;
 
 fundsChart
       .renderHorizontalGridLines(true)
