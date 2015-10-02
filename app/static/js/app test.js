@@ -460,22 +460,24 @@ inceptionBarChart.xAxis()
 function update_funds() {
 
  	var liste_companies = Company.bottom(Infinity); 	
-
-	company.filter(null);
 	
 	var array_companies = [];
+	var somme_seed = 0;
 
 	for(i = 0; i < liste_companies.length; i++) {
 		array_companies.push(liste_companies[i].Company);
+		somme_seed += liste_companies[i].Round_1;
 	}
 	
 	$("#fundsBarChart rect.bar").css("opacity", "1");
 	
-	if(liste_companies.length == 0){
+	if(liste_companies.length == 0 || somme_seed == 0){
 			
 		$("#fundsBarChart rect.bar").css("opacity", "0");	
 			
-	} else {
+	} 
+	
+	company.filter(null);
 
 	company.filter(function(d) {
 
@@ -483,7 +485,7 @@ function update_funds() {
 		return d;
 	} });
 	
-    }
+    
 	
 }
 
