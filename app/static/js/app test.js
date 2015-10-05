@@ -421,6 +421,7 @@ fundsChart
 	  .xUnits(d3.time.years)
       .x(d3.time.scale().domain([new Date(2008, 5, 1), new Date(2015, 11, 31)]))
       .on("filtered", function(chart, filter) {
+    console.log(filter);
     
 	update_funds();
     
@@ -449,6 +450,10 @@ fundsChart
 	update_logo();
       	
       });
+      
+fundsChart.filter([new Date(2008, 5, 2), new Date(2015, 8, 30)]);
+
+inceptionBarChart.filter([new Date(2006, 2, 31), new Date(2015, 6, 6)]);
       
 fundsChart.xAxis()
      .tickFormat(d3.time.format("'%y"));
