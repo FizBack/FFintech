@@ -464,7 +464,7 @@ fundsChart
       
 //fundsChart.filter([new Date(2008, 5, 2), new Date(2015, 8, 30)]);
 
-inceptionBarChart.filter([new Date(2006, 5, 31), new Date(2014, 6, 6)]);
+//inceptionBarChart.filter([new Date(2006, 5, 31), new Date(2014, 6, 6)]);
       
 fundsChart.xAxis()
      .tickFormat(d3.time.format("'%y"));
