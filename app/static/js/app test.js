@@ -610,7 +610,7 @@ function update_logo() {
 //       return rightRoundedRect(i % nb_width * width_logo - 5, Math.floor(i/nb_width) % nb_height * height_logo - 3, 130, 51, 20);
 //     })
       .attr("class", "rect image")
-      .style("fill", "grey")
+      .style("fill", "#073559")
       .attr("x", function(d,i){
         return i % nb_width * width_logo - 5;
       })
