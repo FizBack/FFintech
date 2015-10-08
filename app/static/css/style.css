@@ -12,6 +12,22 @@ span#madeinfrance {
   cursor:pointer;
 }
 
+.rect {
+	opacity: 0.08;
+	border: 2px solid black;
+border-radius: 7px;
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+
+/* transition : all 1s; */
+}
+
+.rect:hover {
+	opacity : 0.3;
+}
+
+
+
 .svg-cross {
 	width : 32px;
 	height : 32px;
@@ -122,11 +138,13 @@ span#madeinfrance {
     transition : all 1s;
 }
 
+/* 
 .image:hover {
 	border-color : #0D4F8B ;
 	border-width : 1px;
 	border-style : solid;
 }
+ */
 
 /* FIN TABLE DES LOGOS */
 
@@ -452,7 +470,6 @@ h4.FizBack {
 /* LOADING IMG */
 
 
-/* 
 
 .containloader {
   background: #fff;
@@ -625,7 +642,6 @@ h4.FizBack {
             transform: translate(0);
   }
 }
- */
  
 .modal-backdrop.in {
 opacity: 0.5 !important ;

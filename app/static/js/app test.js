@@ -505,6 +505,17 @@ function update_funds() {
 	
 }
 
+function rightRoundedRect(x, y, width, height, radius) {
+  return "M" + x + "," + y
+       + "h" + (width - radius)
+       + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
+       + "v" + (height - 2 * radius)
+       + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
+       + "h" + (radius - width)
+       + "z";
+}
+
+
 function update_logo() {
 
 	var nb_companies = (Company.bottom(Infinity)).length;
@@ -526,7 +537,7 @@ function update_logo() {
 	
 	var logo_table = svg_logo.append("g")
     			.attr("class", "logo_table")
-    			.attr("transform", "translate(" + (width - nb_width * width_logo + 20) / 2 +  ",10)");
+    			.attr("transform", "translate(" + (width - nb_width * width_logo + 20) / 2 +  ",16)");
 
 	logo_table.selectAll("image")
       .data(Company.bottom(Infinity))
@@ -588,6 +599,73 @@ function update_logo() {
     .duration(500)
     .attr("width", 120)
     .attr("height", 45);
+    
+    
+    
+	logo_table.selectAll("rect")
+      .data(Company.bottom(Infinity))
+      .enter()
+      .append("rect")
+//       .attr("d", function(d,i) {
+//       return rightRoundedRect(i % nb_width * width_logo - 5, Math.floor(i/nb_width) % nb_height * height_logo - 3, 130, 51, 20);
+//     })
+      .attr("class", "rect image")
+      .style("fill", "grey")
+      .attr("x", function(d,i){
+        return i % nb_width * width_logo - 5;
+      })
+      .attr("y", function(d,i){
+        return Math.floor(i/nb_width) % nb_height * height_logo - 3 ;
+      })
+      .attr("rx", 5)
+      .attr("ry", 5)
+      .attr("width", 0)
+      .attr("height", 0)
+      .on("click", function(){
+      
+      	  var monthNames = ["January", "February", "March", "April", "May", "June",
+ 			 "July", "August", "September", "October", "November", "December"];
+          
+          var element = d3.select(this);
+          
+          $(".modal-company").text("- " + element[0][0].__data__.Company + " -");
+          $(".modal-logo").attr("src", "/static/image/" + element[0][0].__data__.Logo);
+          $(".modal-websitelink").attr("href", element[0][0].__data__.Website);
+          
+          var FFmembership = element[0][0].__data__.FF_membership ? "Yes" : "No" ;
+          
+          var investors_1 = (element[0][0].__data__.Investors_1 != "Undisclosed" && element[0][0].__data__.Investors_1 != undefined) ? element[0][0].__data__.Investors_1 : "undisclosed investors" ;
+          var investors_2 = (element[0][0].__data__.Investors_2 != "Undisclosed" && element[0][0].__data__.Investors_2 != undefined) ? element[0][0].__data__.Investors_2 : "undisclosed investors" ;
+          var investors_3 = (element[0][0].__data__.Investors_3 != "Undisclosed" && element[0][0].__data__.Investors_3 != undefined) ? element[0][0].__data__.Investors_3 : "undisclosed investors" ;
+          var investors_4 = (element[0][0].__data__.Investors_4 != "Undisclosed" && element[0][0].__data__.Investors_4 != undefined) ? element[0][0].__data__.Investors_4 : "undisclosed investors" ;
+          
+          $(".modal-FFmembership").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; member : " + FFmembership );
+          $(".modal-creation").text("Date of creation : " + monthNames[element[0][0].__data__.Inception.getMonth()] + " " + element[0][0].__data__.Inception.getFullYear());
+          $(".modal-CEO").html("CEO : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + element[0][0].__data__.CEO);
+          $(".modal-linkedin").attr("href", element[0][0].__data__.Linkedin);
+          $(".modal-category").text("Category : " + element[0][0].__data__.Category);
+          $(".modal-BM").text("Business type : " + element[0][0].__data__.Business_model);
+          $(".modal-abstract").text(element[0][0].__data__.Abstract);
+          $(".modal-headquarters").text("Headquarters : " + element[0][0].__data__.Headquarters);
+          if(element[0][0].__data__.Round_1 != "0") {$(".modal-round1").text("Seed round : €" + element[0][0].__data__.Round_1 + "m led by " + investors_1 + " on " + monthNames[element[0][0].__data__.Date_1.getMonth()] + " " + element[0][0].__data__.Date_1.getFullYear()) } else {$(".modal-round1").text("")};
+          if(element[0][0].__data__.Round_2 != "0") {$(".modal-round2").text("Series A : €" + element[0][0].__data__.Round_2 + "m led by " + investors_2 + " on " + monthNames[element[0][0].__data__.Date_2.getMonth()] + " " + element[0][0].__data__.Date_2.getFullYear()) } else {$(".modal-round2").text("")};
+		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " on " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) } else {$(".modal-round3").text("")} ;
+		  if(element[0][0].__data__.Round_4 != "0") {$(".modal-round4").text("Series C : €" + element[0][0].__data__.Round_4 + "m led by " + investors_4 + " on " + monthNames[element[0][0].__data__.Date_4.getMonth()] + " " + element[0][0].__data__.Date_4.getFullYear()) } else {$(".modal-round4").text("")} ;
+          
+          $(".modal-website").html("<a href='" + element[0][0].__data__.Website + "'>Website</a>");
+          
+          $('#myModal').modal('toggle'); 
+
+       })
+    .transition()
+    .delay(function(d,i){
+      return i * 20;
+      })
+    .duration(500)
+    .attr("width", 130)
+    .attr("height", 51);
+    
+       
 }
 
 update_logo();
