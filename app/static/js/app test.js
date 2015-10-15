@@ -16,7 +16,6 @@ var width_logo = 140, //marge de 20 pour la largeur
 var margin = { top: 0, bottom: 0, left: 0, right: 0 };
 
 var FranceFintech = "http://static1.squarespace.com/static/556da4b8e4b0f81335bf7dab/t/55785ab1e4b00fe50a288048/1434355652756/?format=1500w";
-var entonnoir = "http://s30.postimg.org/onqkun8qp/basic2_178_filter_512.png";
     
 var svg_filtres = d3.select("#filtres").append("svg:svg");
     		
@@ -461,6 +460,8 @@ fundsChart
 	update_logo();
       	
       });
+      
+$(".color-2").on("click", function() {inceptionBarChart.filter()});    
       
 //fundsChart.filter([new Date(2008, 5, 2), new Date(2015, 8, 30)]);
 
