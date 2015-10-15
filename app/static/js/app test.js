@@ -528,7 +528,7 @@ function update_logo() {
 	var nb_width = Math.floor(width / width_logo);
 	var nb_height = Math.ceil(nb_companies / nb_width);
 	
-	$("div#table_logos").css("transition","height 1.3s");
+	$("div#table_logos").css("transition","height 0.6s");
 	$("div#table_logos").css("height",nb_height * height_logo + 20 + "px");
 
     var svg_logo = d3.select("#table_logos").append("svg")
