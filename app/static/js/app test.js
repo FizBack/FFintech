@@ -202,11 +202,14 @@ var FF_trigger = svg_FF.append("text")
         .style("opacity", 0.6)
         .attr("x", 210)
         .attr("y", 85);
-  
+
+if(width > 420) { svg_FF_width = 400 }
+else { svg_FF_width = 200 }
+
 var FF = svg_FF.append("image")
     .attr("x", 0 )
     .attr("y", 0)
-    .attr("width", 400)
+    .attr("width", svg_FF_width)
     .attr("height", 100)
     .style("opacity", 0.6)
     .attr("xlink:href", FranceFintech)
@@ -311,8 +314,6 @@ height = $(window).height();
 							else if ($(window).width() > 600) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
 							else if ($(window).width() > 450) { var text_width = "49px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
 							else if ($(window).width() < 451) { var text_width = "38px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
-							
-							if(ff_margin == 0) {ff_margin = 10}
 							
 							$("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 							$('#FF').css("left", Math.round(ff_margin) + "%");
