@@ -312,6 +312,8 @@ height = $(window).height();
 							else if ($(window).width() > 450) { var text_width = "49px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
 							else if ($(window).width() < 451) { var text_width = "38px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
 							
+							if(ff_margin == 0) {ff_margin = 10}
+							
 							$("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 							$('#FF').css("left", Math.round(ff_margin) + "%");
 							$("h1#total-leve").css("font-size", text_width);
@@ -462,7 +464,7 @@ fundsChart
       	
       });
       
-$(".color-2").on("click", function() {inceptionBarChart.filter()});    
+$("#color-2").on("click", function() {inceptionBarChart.filter()});    
       
 //fundsChart.filter([new Date(2008, 5, 2), new Date(2015, 8, 30)]);
 
