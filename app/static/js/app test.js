@@ -587,10 +587,10 @@ function update_logo() {
           $(".modal-BM").text("Business type : " + element[0][0].__data__.Business_model);
           $(".modal-abstract").text(element[0][0].__data__.Abstract);
           $(".modal-headquarters").text("Headquarters : " + element[0][0].__data__.Headquarters);
-          if(element[0][0].__data__.Round_1 != "0") {$(".modal-round1").text("Seed round : €" + element[0][0].__data__.Round_1 + "m led by " + investors_1 + " on " + monthNames[element[0][0].__data__.Date_1.getMonth()] + " " + element[0][0].__data__.Date_1.getFullYear()) } else {$(".modal-round1").text("")};
-          if(element[0][0].__data__.Round_2 != "0") {$(".modal-round2").text("Series A : €" + element[0][0].__data__.Round_2 + "m led by " + investors_2 + " on " + monthNames[element[0][0].__data__.Date_2.getMonth()] + " " + element[0][0].__data__.Date_2.getFullYear()) } else {$(".modal-round2").text("")};
-		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " on " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) } else {$(".modal-round3").text("")} ;
-		  if(element[0][0].__data__.Round_4 != "0") {$(".modal-round4").text("Series C : €" + element[0][0].__data__.Round_4 + "m led by " + investors_4 + " on " + monthNames[element[0][0].__data__.Date_4.getMonth()] + " " + element[0][0].__data__.Date_4.getFullYear()) } else {$(".modal-round4").text("")} ;
+          if(element[0][0].__data__.Round_1 != "0") {$(".modal-round1").text("Seed round : €" + element[0][0].__data__.Round_1 + "m led by " + investors_1 + " in " + monthNames[element[0][0].__data__.Date_1.getMonth()] + " " + element[0][0].__data__.Date_1.getFullYear()) } else {$(".modal-round1").text("")};
+          if(element[0][0].__data__.Round_2 != "0") {$(".modal-round2").text("Series A : €" + element[0][0].__data__.Round_2 + "m led by " + investors_2 + " in " + monthNames[element[0][0].__data__.Date_2.getMonth()] + " " + element[0][0].__data__.Date_2.getFullYear()) } else {$(".modal-round2").text("")};
+		  if(element[0][0].__data__.Round_3 != "0") {$(".modal-round3").text("Series B : €" + element[0][0].__data__.Round_3 + "m led by " + investors_3 + " in " + monthNames[element[0][0].__data__.Date_3.getMonth()] + " " + element[0][0].__data__.Date_3.getFullYear()) } else {$(".modal-round3").text("")} ;
+		  if(element[0][0].__data__.Round_4 != "0") {$(".modal-round4").text("Series C : €" + element[0][0].__data__.Round_4 + "m led by " + investors_4 + " in " + monthNames[element[0][0].__data__.Date_4.getMonth()] + " " + element[0][0].__data__.Date_4.getFullYear()) } else {$(".modal-round4").text("")} ;
           
           $(".modal-website").html("<a href='" + element[0][0].__data__.Website + "'>Website</a>");
           
