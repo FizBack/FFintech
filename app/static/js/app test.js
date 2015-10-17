@@ -203,13 +203,13 @@ var FF_trigger = svg_FF.append("text")
         .attr("x", 210)
         .attr("y", 85);
 
-if(width > 420) { svg_FF_width = 400 }
-else { svg_FF_width = 200 }
+// if(width > 420) { svg_FF_width = 400 }
+// else { svg_FF_width = 200 }
 
 var FF = svg_FF.append("image")
     .attr("x", 0 )
     .attr("y", 0)
-    .attr("width", svg_FF_width)
+    .attr("width", 400)
     .attr("height", 100)
     .style("opacity", 0.6)
     .attr("xlink:href", FranceFintech)
