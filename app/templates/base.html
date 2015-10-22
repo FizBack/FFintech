@@ -234,21 +234,15 @@
 				<section class="about" id="about">
 					<footer>
 						<div class="row" id="footer">
-							    <div class="col-md-8" style="height:50px;">
+							    <div class="col-md-8 col-xs-8" style="height:50px;">
 	  								<h4 class="FizBack"> By&nbsp;<a style="color:black;text-decoration:underline" href="https://twitter.com/FizBack">@FizBack</a>&nbsp;for&nbsp;<a style="color:black;text-decoration:underline" href="https://www.twitter.com/the_assets">The Assets</a> </h4>
 							    </div>
-<!--							    <div class="col-md-2" style="height:50px;">
- 
-							        <h4 class="FizBack"> FORK </h4>
-	  								<a class="FizBack" href="https://github.com/FizBack/FFintech"> <img class="github" src="https://i.imgur.com/wRNRwGX.png"> </a>
-							    </div>
- -->
-							    <div class="col-md-2" style="height:50px;">
-							        <h4 class="FizBack"> SEE ALSO </h4>
+							    <div class="col-md-2 col-xs-2" style="height:50px;">
+							        <h4 class="FizBack seealso"> SEE ALSO </h4>
 	  								<a class="FizBack" href="http://thefintechjellyfish.theassets.co"> <img class="jellyfish" src="https://d30y9cdsu7xlg0.cloudfront.net/png/5356-200.png"> </a>
 							    </div>
-							    <div class="col-md-2" style="height:50px;">
-							    	<h4 class="FizBack"> SHARE </h4>
+							    <div class="col-md-2 col-xs-2" style="height:50px;">
+							    	<h4 class="FizBack seealso"> SHARE </h4>
 	  								<img class="twitter" src="/static/image/twitter.png">
 							    </div>
 						</div>
@@ -261,6 +255,12 @@
    	
    	
    	<script>
+   	
+   	if(width < 992) { $(".seealso").css("display", "none")
+   	$(".seealso").css("padding-left","0");
+  	$(".twitter").css("margin-left","0");
+//   	$(".jellyfish").css("margin-left","0");
+   	}
    	
 	$(document).ready(function(){
     	$('[data-toggle="tooltip"]').tooltip(); 

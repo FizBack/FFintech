@@ -319,6 +319,20 @@ height = $(window).height();
 							$('#FF').css("left", Math.round(ff_margin) + "%");
 							$("h1#total-leve").css("font-size", text_width);
 							$("h1#total-leve").css("width", div_width + "px");
+							
+   	if(width < 992) { 
+   	$(".seealso").css("display", "none");
+//    	$(".seealso").css("padding-left","0px");
+  	$(".twitter").css("margin-left","0px");
+  	$(".jellyfish").css("margin-left","0px");
+   	}
+   	
+   	if(width > 991) { 
+   	$(".seealso").css("display", "block");
+ //   	$(".seealso").css("padding-left","0px");
+  	$(".twitter").css("margin-left","88px");
+  	$(".jellyfish").css("margin-left","90px");
+   	}
 
 
 inceptionBarChart
