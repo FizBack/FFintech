@@ -7,6 +7,9 @@ span#madeinfrance {
 	font-style : italic;
 }
 
+.container { width: auto; }
+.container-fluid { width: auto; }
+
 .image {
   visibility: visible;
   cursor:pointer;

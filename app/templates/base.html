@@ -6,6 +6,7 @@
   	<meta charset="utf-8" />
   	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
 	<meta name="description" content="Le club FinTech France" />
     <meta name="author" content="Samuel Fillon" />
     	
@@ -224,8 +225,8 @@
 							else if ($(window).width() > 976) { var text_width = "40px"; var bt_margin = 100 * (($(window).width() / 3 - 210) / 2) / ($(window).width() / 3) ; var ff_margin = 100 * (($(window).width() / 3 - 400) / 2) / ($(window).width() / 3) ; var div_width = $(window).width() / 3 - 5}
 							else if ($(window).width() > 600) { var text_width = "52px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
 							else if ($(window).width() > 450) { var text_width = "49px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width() - 10}
-							else if ($(window).width() < 451) { var text_width = "36px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width()}
-							
+							else if ($(window).width() < 451) { var text_width = "36px"; var bt_margin = 100 * (($(window).width() - 210) / 2) / ($(window).width()) ; var ff_margin = 100 * (($(window).width() - 400) / 2) / ($(window).width() ) ; var div_width = $(window).width()+200}
+							console.log($(window).width());
 							$("#businessModelPieChart").css("left", Math.round(bt_margin) + "%");
 							$('#FF').css("left", Math.round(ff_margin) + "%");
 							$("h1#total-leve").css("font-size", text_width);
