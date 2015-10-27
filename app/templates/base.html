@@ -241,7 +241,7 @@
 							    </div>
 							    <div class="col-md-2 col-xs-2">
 							        <h4 class="FizBack seealso"> ANALYSIS </h4>
-	  								<a class="FizBack" href="https://medium.com/@RebMelMen/who-let-the-frogs-out-4e01bb871bef"> <img class="medium" src="/static/image/medium.png"> </a>
+	  								<a class="FizBack medium-anchor" href="https://medium.com/@RebMelMen/who-let-the-frogs-out-4e01bb871bef"> <img class="medium" src="/static/image/medium.png"> </a>
 							    </div>
 
 							    <div class="col-md-2 col-xs-2">
@@ -262,6 +262,11 @@
    	
    	
    	<script>
+   	
+   	$(".medium-anchor").click(function(){
+   	  window.open('https://medium.com/@RebMelMen/who-let-the-frogs-out-4e01bb871bef');
+  		return false;
+   	})
    	
    	if(width < 992) { $(".seealso").css("display", "none")
 //    	$(".seealso").css("padding-left","0");
