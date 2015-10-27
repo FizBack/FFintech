@@ -325,6 +325,7 @@ height = $(window).height();
 //    	$(".seealso").css("padding-left","0px");
   	$(".twitter").css("margin-left","0px");
   	$(".jellyfish").css("margin-left","0px");
+  	$(".medium").css("margin-left","20px");
    	}
    	
    	if(width > 991) { 
@@ -332,6 +333,7 @@ height = $(window).height();
  //   	$(".seealso").css("padding-left","0px");
   	$(".twitter").css("margin-left","88px");
   	$(".jellyfish").css("margin-left","90px");
+  	$(".medium").css("margin-left","96px");
    	}
 
 

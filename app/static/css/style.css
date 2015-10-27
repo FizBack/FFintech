@@ -450,24 +450,17 @@ h4.FizBack {
 	margin-top :6px;
 }
 
-.github {
+.medium {
 	position : relative;
-	width : 50px;
-	height : 50px;
-	margin-left : 55px;
-	margin-top :0px;
+	width : 32px;
+	height : 32px;
+	margin-left : 96px;
+	margin-top :7px;
 }
 
 /* FIN FOOTER */
 
-
-
-
-
-
-/* LOADING IMG */
-
-
+/* 
 
 .containloader {
   background: #fff;
@@ -644,3 +637,4 @@ h4.FizBack {
 .modal-backdrop.in {
 opacity: 0.5 !important ;
 }
+ */
