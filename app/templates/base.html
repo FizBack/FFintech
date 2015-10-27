@@ -246,7 +246,7 @@
 
 							    <div class="col-md-2 col-xs-2">
 							        <h4 class="FizBack seealso"> SEE ALSO </h4>
-	  								<a class="FizBack" href="http://thefintechjellyfish.theassets.co"> <img class="jellyfish" src="https://d30y9cdsu7xlg0.cloudfront.net/png/5356-200.png"> </a>
+	  								<a class="FizBack jellyfish-anchor" href="http://thefintechjellyfish.theassets.co"> <img class="jellyfish" src="https://d30y9cdsu7xlg0.cloudfront.net/png/5356-200.png"> </a>
 							    </div>
 							    <div class="col-md-2 col-xs-2">
 							    	<h4 class="FizBack seealso"> SHARE </h4>
@@ -265,6 +265,11 @@
    	
    	$(".medium-anchor").click(function(){
    	  window.open('https://medium.com/@RebMelMen/who-let-the-frogs-out-4e01bb871bef');
+  		return false;
+   	})
+   	
+   	$(".jellyfish-anchor").click(function(){
+   	  window.open('http://thefintechjellyfish.theassets.co');
   		return false;
    	})
    	
